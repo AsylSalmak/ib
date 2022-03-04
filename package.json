@@ -4,13 +4,32 @@
   "description": "online-banking",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack serve",
+    "build": "webpack"
   },
   "author": "AsylSalmak",
   "license": "ISC",
   "dependencies": {
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "redux": "^4.1.2"
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.1.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^1.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.2",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^4.7.4"
   }
 }
