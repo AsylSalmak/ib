@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import { Dropdown, Button } from "semantic-ui-react";
+import { Popup, Icon } from "semantic-ui-react";
 import LoginForm from "./LoginForm";
 
-const LoginDropdawnNenu = () => {
-  const [open, setOpen] = useState(false);
+const LoginDropdownMenu = () => {
   return (
-    <Dropdown
-      open={open}
+    <Popup
+      content={<LoginForm />}
+      on="click"
+      pinned
       trigger={
-        <Button
-          onClick={() => {
-            setOpen(!open);
-          }}
-        ></Button>
+        <span className="dropwdown-label">
+          Login
+          <Icon name="angle down" />
+        </span>
       }
-      item
-      text="Login"
-    >
-      <Dropdown.Menu>
-        <Dropdown.Header>Login into your account</Dropdown.Header>
-        <LoginForm />
-      </Dropdown.Menu>
-    </Dropdown>
+      position="bottom right"
+    />
   );
 };
-export default LoginDropdawnNenu;
+export default LoginDropdownMenu;

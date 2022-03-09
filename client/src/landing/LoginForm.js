@@ -10,7 +10,7 @@ const LoginForm = () => {
   return (
     <Form className="login-form">
       <Form.Field>
-        <label>email</label>
+        <label>Email</label>
         <input value={email} onChange={(e) => {
             setEmail(e.target.value)
         }} placeholder="email" />
