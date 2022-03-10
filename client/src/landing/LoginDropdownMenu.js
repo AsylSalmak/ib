@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { Popup, Icon } from "semantic-ui-react";
 import LoginForm from "./LoginForm";
+import { useSelector } from "react-redux";
+import UserActions from "./UserActions";
 
 const LoginDropdownMenu = () => {
+  const user = useSelector((store) => store.user);
+
   return (
-    <Popup
-      content={<LoginForm />}
-      on="click"
-      pinned
-      trigger={
-        <span className="dropwdown-label">
-          Login
-          <Icon name="angle down" />
-        </span>
-      }
-      position="bottom right"
-    />
+    <div>
+      {user.logedIn ? (
+        <Popup
+          content={<UserActions />}
+          on="click"
+          pinned
+          trigger={
+            <span className="dropwdown-label">
+              {user.username} <Icon name="angle down" />
+            </span>
+          }
+          position="bottom right"
+        />
+      ) : (
+        <Popup
+          content={<LoginForm />}
+          on="click"
+          pinned
+          trigger={
+            <span className="dropwdown-label">
+              Login
+              <Icon name="angle down" />
+            </span>
+          }
+          position="bottom right"
+        />
+      )}
+    </div>
   );
 };
 export default LoginDropdownMenu;

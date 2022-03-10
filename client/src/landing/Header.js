@@ -1,7 +1,7 @@
 import React from "react";
 import { Input, Menu, Container } from "semantic-ui-react";
 import LoginDropdownMenu from "./LoginDropdownMenu";
-
+import "./index.css";
 const Header = () => {
   return (
     <div className="Header-top">
