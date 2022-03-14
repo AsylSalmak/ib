@@ -5,6 +5,7 @@ module.exports = {
   entry: path.join(__dirname, "client", "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "client", "dist"),
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -38,4 +39,7 @@ module.exports = {
       template: path.join(__dirname, "client", "index.html"),
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };

@@ -1,35 +1,23 @@
-.dropwdown-label:hover {
-  background-color: #4183c4;
-  padding: 0.78571429em 0.92857143em;
-  margin: 0 0.35714286em;
+.section1 button{
+  color: #4183c4;
 }
-.dropwdown-label {
-  padding: 0.78571429em 0.92857143em;
-  margin: 0 0.35714286em;
-  border-radius: 4px;
-  color: #eee;
+
+.section1 h3 {
+  font-size: 30px;
+  font-weight: 100;
 }
-.Header-top {
-  background-color: #0b0b17;
-  height: 100%;
-  box-sizing: border-box;
+
+
+.section2 {
+  height: 500px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("https://thumbs.gfycat.com/LastSimilarIguana-max-1mb.gif");
 }
-.section1{
+.section2-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('https://www.paypalobjects.com/marketing/web/ru/home/hero-banner-overlay.jpg');
-  height: 500px;
-}
-
-.section1 h3{
-  color: #fff;
-  font-size: 40px;
-  font-weight: 100;
-  
-}
-
-.section1 p{
-  color: #fff;
-  font-size: 20px;
+  align-items: center;
 }

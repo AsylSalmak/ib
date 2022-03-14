@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { Button, Checkbox, Form, Message } from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { SET_USER } from "../user/reducers/userReducer";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -14,9 +15,9 @@ const LoginForm = () => {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   return (
-    <Form >
+    <Form>
       <Form.Field>
         <label>Email</label>
         <input
@@ -76,6 +77,7 @@ const LoginForm = () => {
               );
               setError("");
               setLoading(false);
+              navigate("/private/profile");
             })
             .catch(function (error) {
               if (error.response) {
