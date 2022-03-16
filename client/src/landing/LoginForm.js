@@ -62,7 +62,7 @@ const LoginForm = () => {
           setLoading(true);
           axios({
             method: "post",
-            url: "messages",
+            url: "auth",
             baseURL: "http://127.0.0.1:3000",
             data: { login: email, password: password },
           })
@@ -77,7 +77,7 @@ const LoginForm = () => {
               );
               setError("");
               setLoading(false);
-              navigate("/private/profile");
+              navigate("/private/dashboard");
             })
             .catch(function (error) {
               if (error.response) {
