@@ -6,11 +6,7 @@ import CarouselBox from "./CarouselBox";
 const Section1 = () => {
   return (
     <section className="section1">
-      <Container  >
-        <div>
         <CarouselBox />
-        </div>
-      </Container>
     </section>
   );
 };

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Placeholder } from "semantic-ui-react";
+import "./Dashboard.css";
+
 
 const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);

@@ -2,7 +2,8 @@ import React from "react";
 import { Outlet, Navigate, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Container, Menu } from "semantic-ui-react";
-import "./index.css";
+import "./PrivateSections.css";
+
 
 const PrivateSections = () => {
   const { logedIn } = useSelector((store) => store.user);

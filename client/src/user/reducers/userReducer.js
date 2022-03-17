@@ -13,7 +13,7 @@ const initialState =  {
   logedIn: false,
 };
 
-const init_state = userFromStorage || initialState
+const init_state = userFromStorage || initialState 
 
 export default (state = init_state, action) => {
   switch (action.type) {

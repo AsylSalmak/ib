@@ -11,9 +11,9 @@ const Header = () => {
 
   return (
     <div className="Header-top">
-      <Container>
+      <Container >
         <Menu secondary >
-          <img src={logo} style={{ width: "120px", height: "60px" }} />
+          <img src={logo} style={{ width: "150px", height: "70px", margin:'5px' }} />
           {user.logedIn ?  <Menu.Item ><Link to='./private/dashboard'className="link" >Мой Банк</Link></Menu.Item> : null}
           <Menu.Item ><Link className="link" to='/' >Новости</Link></Menu.Item>
           <Menu.Item ><Link className="link" to='/' >Услуги</Link></Menu.Item>

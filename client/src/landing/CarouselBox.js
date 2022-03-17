@@ -5,76 +5,136 @@ import { Button } from "semantic-ui-react";
 
 const CarouselBox = () => {
   return (
-    <Carousel style={{ width: "100%", paddingTop:'10px' }} variant='dark'>
+    <Carousel style={{ width: "100%", padding:'50px 0' }} variant="dark">
       <Carousel.Item style={{ height: "500px" }}>
         <img
-          className="d-flex w-90 position-absolute top-0 end-0"
-          src="https://wapi.bcc.kz/images/19771c70-4719-4f7b-997c-43439a8c3330683%D1%85480_03_2.png"
+          className="d-flex w-100 h-100 position-absolute top-0 end-0"
+          src="https://tengebank.uz/storage/app/uploads/public/61f/cc8/725/61fcc87258772701082524.png"
           alt="First slide"
         />
         <Carousel.Caption
-          style={{ top: "30%", right: "700px", position: "absolute" }}
+          style={{
+            width: "300px",
+            height: "100%",
+            left: "195px",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingRight: "40px",
+          }}
         >
-          <h3>Весенний кэшбэк</h3>
-          <Button content="Оформить карту" style={{backgroundColor:'#4183c4'}}/>
+          <h3>Откройте Депозит</h3>
+          <Button
+            content="Подробнее"
+            style={{
+              backgroundColor: "#4a9aeb",
+              borderRadius: "7px",
+              width: "150px",
+              height: "50px",
+              marginTop: "20px",
+            }}
+          />
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item style={{ height: "500px" }}>
         <img
-          className="d-flex w-90 position-absolute top-0 end-0"
-          src="https://wapi.bcc.kz/images/4db1b875-866f-47e1-99c0-4c7bd6e2baebFin_1.png"
+          className="d-flex w-100 h-100 position-absolute top-0 end-0"
+          src="https://tengebank.uz/storage/app/uploads/public/622/1de/744/6221de7442423445017143.png"
           alt="Second slide"
         />
         <Carousel.Caption
-          style={{ top: "30%", right: "700px", position: "absolute" }}
+          style={{
+            width: "300px",
+            height: "100%",
+            left: "195px",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingRight: "40px",
+          }}
         >
-          <h3>Финансовую Грамотность</h3>
-          <p>Повышайте вместе с нами!</p>
-          <Button content="Подробнее" style={{backgroundColor:'#4183c4'}}/>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item style={{ height: "500px" }}>
-        <img
-          className="d-flex w-90 position-absolute top-0 end-0"
-          src="https://wapi.bcc.kz/images/15abbd95-f3cb-4925-9d42-eeb9cfb87217683%D1%85480_9.png"
-          alt="Third slide"
-        />
-        <Carousel.Caption
-          style={{ top: "30%", right: "700px", position: "absolute" }}
-        >
-          <h3>#СилавЕдинстве Примите участие в благотворительном сборе</h3>
-          <Button content="Оформить карту" style={{backgroundColor:'#4183c4'}}/>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item style={{ height: "500px" }}>
-        <img
-          className="d-flex w-90 position-absolute top-0 end-0"
-          src="https://wapi.bcc.kz/images/83e3fae0-1156-4281-9e5c-79a6a8217c8a683%D1%85480_05.png"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption
-          style={{ top: "30%", right: "700px", position: "absolute" }}
-        >
-          <h3>Встречайте весну с Нами</h3>
-          <p>Приз: умная колонка Яндекс.Станция</p>
-          <Button content="Подробнее" style={{backgroundColor:'#4183c4'}}/>
+          <h3>Ипотека на вторичное жилье</h3>
+          <Button
+            content="Подробнее"
+            style={{
+              backgroundColor: "#4a9aeb",
+              borderRadius: "7px",
+              width: "150px",
+              height: "50px",
+              marginTop: "20px",
+            }}
+          />
         </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item style={{ height: "500px" }}>
         <img
-          className="d-flex w-90 position-absolute top-0 end-0"
-          src="https://wapi.bcc.kz/images/e4f4b5cd-7d19-49c7-8e0c-84077d0815453.png"
-          alt="Third slide"
+          className="d-flex w-100 h-100 position-absolute top-0 end-0"
+          src="https://tengebank.uz/storage/app/uploads/public/60b/0c8/f25/60b0c8f253e6b492552034.png"
+          alt=" slide"
         />
-
         <Carousel.Caption
-          style={{ top: "30%", right: "700px", position: "absolute" }}
+          style={{
+            width: "300px",
+            height: "100%",
+            left: "195px",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingRight: "40px",
+          }}
         >
-          <h3>Ипотека</h3>
-          <p>Получите предварительное одобрение не выходя из дома</p>
-          <Button content="Подробнее" style={{backgroundColor:'#4183c4'}}/>
+          <h3>Дети учатся быть взрослыми!</h3>
+          <Button
+            content="Подробнее"
+            style={{
+              backgroundColor: "#4a9aeb",
+              borderRadius: "7px",
+              width: "150px",
+              height: "50px",
+              marginTop: "20px",
+            }}
+          />
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      <Carousel.Item style={{ height: "500px" }}>
+        <img
+          className="d-flex w-100 h-100 position-absolute top-0 end-0"
+          src="https://tengebank.uz/storage/app/uploads/public/620/ba0/0c3/620ba00c36045761246217.png"
+          alt=" slide"
+        />
+        <Carousel.Caption
+          style={{
+            width: "300px",
+            height: "100%",
+            left: "195px",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingRight: "40px",
+          }}
+        >
+          <h3>Переводы по миру</h3>
+          <Button
+            content="Подробнее"
+            style={{
+              backgroundColor: "#4a9aeb",
+              borderRadius: "7px",
+              width: "150px",
+              height: "50px",
+              marginTop: "20px",
+            }}
+          />
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

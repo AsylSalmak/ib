@@ -1,10 +1,13 @@
-.section1 button {
-  color: #4183c4;
+.section1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section1 h3 {
   font-size: 30px;
   font-weight: 100;
+  color: #0d213a;
 }
 
 .section2 {
@@ -12,13 +15,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  margin: 50px 0;
 }
 
 .section2-box {
   display: flex;
   justify-content: space-around;
-  margin: 30px;
 }
 .cardImages {
   width: 400px;
@@ -34,6 +36,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.section2-title h2, .section2-title p, .section2TxtBox p, .section2TxtBox h4{
+color: #0d213a;
 }
 .section2BtnBox {
   display: flex;
