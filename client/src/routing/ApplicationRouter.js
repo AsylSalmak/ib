@@ -9,7 +9,7 @@ import Accounts from "../private/private_sections/accounts/components/Accounts";
 import Payments from "../private/private_sections/payments/components/Payments";
 import Transfers from "../private/private_sections/transfers/components/Transfers";
 import Operations from "../private/private_sections/operations/components/Operations";
-
+import Footer from "../Footer/Footer";
 const ApplicationRouter = () => {
   return (
     <BrowserRouter>
@@ -27,6 +27,7 @@ const ApplicationRouter = () => {
         </Route>
         <Route path="*" element={<Landing />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

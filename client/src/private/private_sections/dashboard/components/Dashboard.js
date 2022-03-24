@@ -3,13 +3,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Placeholder } from "semantic-ui-react";
 import "./Dashboard.css";
-
+import logo from "../../../../public/visa.png";
+import Templates from "./Templates";
+import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 
 const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);
   const [cards, setCards] = useState([]);
   const [credits, setCredits] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios({
@@ -17,7 +19,7 @@ const Dashboard = () => {
       url: "accounts",
       baseURL: "http://127.0.0.1:3000",
     }).then((response) => {
-      setLoading(false)
+      setLoading(false);
       const credits = [];
       const current = [];
       const cards = [];
@@ -40,18 +42,13 @@ const Dashboard = () => {
     });
   }, []);
 
-  console.log(cards);
-  console.log(credits);
-  console.log(currentAccounts);
-
   return (
     <div className="Dashboard-container">
-      <div className="Dashboard-box1">
+      <div className="Dashboard-block-1">
         <h4>Мои счета</h4>
-        <div className="cards">
+        <div className="Dashboard-block1-itemBox">
           <h4>Карты</h4>
-
-          {loading? (
+          {loading ? (
             <div className="dashboard-loader">
               <Placeholder style={{ width: "90%", margin: "20px" }} fluid>
                 <Placeholder.Line length="full" />
@@ -61,72 +58,66 @@ const Dashboard = () => {
               </Placeholder>
             </div>
           ) : (
-            <div className="box-content">
-              {cards.length ? cards.map((account, index) => (
-                <div className="cardsFilter">
-                  <div className="cardsBox">
-                    <label>{account.alias}</label>
-                    <div>{account.account}</div>
-                  </div>
+            <div>
+              {cards.length ? (
+                cards.map((account, index) => (
+                  <div className="cardsFilter">
+                    <div className="cardsBox1">
+                      <div className="cardsNumber">{account.cardNumber}</div>
 
-                  <div className="cardsBox">
-                    <label>Номер Карты</label>
-                    <div>{account.cardNumber}</div>
-                  </div>
+                      <div className="cardsDate">
+                        {account.expirationDate}
+                        <img src={logo} />
+                      </div>
+                    </div>
+                    <div className="cardsBox">
+                      <label>{account.alias}</label>
+                    </div>
 
-                  <div className="cardsBox">
-                    <label>Дата</label>
-                    <div>{account.expirationDate}</div>
-                  </div>
-
-                  <div className="cardsBox">
-                    <label>Баланс</label>
-                    <div>
-                      {account.balance}
-                      {account.currencyCode}
+                    <div className="cardsBox">
+                      <label>Баланс</label>
+                      <div>
+                        <span>{formatToCurrencyNumber(account.balance)}</span>{" "}
+                        <span>{account.currencyCode}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )) : <h3>Карта отсутствует</h3>}
+                ))
+              ) : (
+                <h3>Карта отсутствует</h3>
+              )}
             </div>
           )}
         </div>
 
-        <div className="cards">
+        <div className="Dashboard-block1-itemBox">
           <h4>Текущие счета</h4>
           {currentAccounts.map((account, index) => (
             <div className="cardsFilter">
               <div className="cardsBox">{account.account}</div>
               <div className="cardsBox">
-                {account.balance}
-                {account.currencyCode}
+                <span> {formatToCurrencyNumber(account.balance)}</span> {"  "}
+                <span> {account.currencyCode}</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="cards">
+        <div className="Dashboard-block1-itemBox">
           <h4>Кредиты</h4>
           {credits.map((account, index) => (
             <div className="cardsFilter">
               <div className="cardsBox">{account.account}</div>
               <div className="cardsBox">
-                {account.balance}
-                {account.currencyCode}
+                <span> {formatToCurrencyNumber(account.balance)}</span>
+                {"  "}
+                <span> {account.currencyCode}</span>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="Dashboard-box2">
-        <h4>Мои платежи</h4>
-        <div className="Dashboard-operations"></div>
-        <h4>Мои переводы</h4>
-        <div className="Dashboard-operations"></div>
-        <h4>Последние операции</h4>
-        <div className="Dashboard-operations"></div>
-      </div>
+      <Templates />
     </div>
   );
 };

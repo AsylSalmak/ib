@@ -1,4 +1,4 @@
-.section1{
+.section1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,8 +37,11 @@
   align-items: center;
   justify-content: center;
 }
-.section2-title h2, .section2-title p, .section2TxtBox p, .section2TxtBox h4{
-color: #0d213a;
+.section2-title h2,
+.section2-title p,
+.section2TxtBox p,
+.section2TxtBox h4 {
+  color: #0d213a;
 }
 .section2BtnBox {
   display: flex;
@@ -69,6 +72,91 @@ color: #0d213a;
   justify-content: start;
   margin-top: 35px;
 }
-.section2Text{
+.section2Text {
   padding-left: 20px;
+}
+
+.section3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+}
+.section3Box {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.newsBox1,.newsBox2,.newsBox3 {
+  width: 30%;
+  height: 100%;
+  margin: 20px;
+  border-radius: 10px;
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+}
+
+.newsBox1:hover,.newsBox2:hover,.newsBox3:hover{
+  color: #3e4041d3;
+  cursor: pointer;
+}
+.newsBox1 p,.newsBox2 p,.newsBox3 p{
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #3e4041d3;
+}
+.newsBox1 h6,.newsBox2 h6,.newsBox3 h6{
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center; 
+}
+.newsBox-txt {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
+}
+.newsBox-txt h6 {
+  font-size: 15px;
+  line-height: 30px;
+  padding: 10px;
+  color: #3e4041d3;
+}
+
+.newsBox-img1 {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://www.nationalbank.kz/image/resize/360/305/data/media/news/images/1HUncj1YsJXKZiC4e6bE5wjcEUj7B7YZthM6eRmQ.jpg");
+}
+.newsBox-img2 {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://www.nationalbank.kz/image/resize/360/305/data/media/news/images/1OEjWg40m9wYgy7FslMqxaEjjma1tIui7H3MADah.jpg");
+}
+.newsBox-img3 {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("https://www.nationalbank.kz/image/resize/360/305/data/media/news/images/LyjhwQUu7PGVbKyYMdwn6AYgwsAWCpGYlC4nhTCe.jpg");
 }

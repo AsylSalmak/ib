@@ -5,11 +5,12 @@
   justify-content: center;
   width: 100%;
 }
-.Dashboard-box1{
+.Dashboard-block-1{
   padding: 20px;
   flex-grow: 1;
   height: 600px;
   margin: 20px;
+  border-radius: 5px;
 }
 
 .cardsFilter{
@@ -18,19 +19,49 @@
   padding: 15px;
   font-size: 15px;
 }
+.cardsBox1{
+  width: 280px;
+  height: 150px;
+  border-radius: 5px;
+  background: rgb(131,58,180);
+background: linear-gradient(280deg, rgba(131,58,180,1) 10%, rgba(253,29,29,1) 50%, rgba(252,69,69,1) 82%);
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  align-items:end;
+}
+.cardsBox1 img{
+  width: 80px;
+  height: 60px;
+}
 
+.cardsNumber{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+
+}
+.cardsDate{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: #fff;
+}
 .cardsBox label{
   font-size: 20px;
 }
 
-.cards{
+.Dashboard-block1-itemBox{
   margin-top: 20px;
   -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
  
 }
-.cards h4{
+.Dashboard-block1-itemBox h4{
   padding: 10px;
 }
 
@@ -39,13 +70,80 @@
   height: 600px;
   padding: 20px; 
 }
-.Dashboard-operations{
-  height: 150px;
-  margin-top: 20px;
+
+.Dashboard-block h4{
+  margin-top: 45px;
+}
+
+.paymentCont, .transfersCont{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  overflow: hidden;
+  margin-top: 15px;
 }
-.Dashboard-box2 h4{
-  margin-top: 20px;
+.paymentBox, .transfersBox{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 0 10px;
+  width: 100%;
+  overflow: hidden;
+  
+}
+.paymentTxt, .transfersTxt{
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+.paymentTxt label:nth-last-child(3){
+  font-weight: 600;
+}
+.paymentTxt label:nth-last-child(2), .paymentTxt p{
+  color: #3e4041d3;
+}
+
+.linkPaymentBox, .linkTransfersBox{
+  width: 100%;
+  text-align: end;
+  height: 20px;
+  padding: 0 10px;
+  padding-bottom: 30px;
+}
+.linkPayment, .linkTransfer{
+  text-decoration: none;
+  color: #4183c4;
+  font-size: 12px;
+}
+.amountBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.operationsBox{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  overflow: hidden;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.operationsBox label{
+  color: rgb(168, 1, 79);
+  margin-right: 15px;
 }
