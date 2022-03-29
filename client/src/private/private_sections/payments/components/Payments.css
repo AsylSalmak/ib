@@ -1,0 +1,79 @@
+.PaymentBox {
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  margin: 0 20px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  text-transform: uppercase;
+}
+.activeService{
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  margin: 0 20px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  text-transform: uppercase;
+  background-color: deepskyblue;
+}
+.activeService h5 {
+  text-align: center;
+  width: 100%;
+  transition: 0.4s;
+}
+.PaymentBox h5 {
+  text-align: center;
+  width: 100%;
+  transition: 0.4s;
+}
+.PaymentCont {
+  display: flex;
+}
+
+.ProviderCont {
+  display: flex;
+  margin: 50px 0;
+  padding: 0;
+  border-radius: 5px;
+}
+.providerBox {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  margin: 0 020px;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+}
+
+.activeProviderBox{
+  display: flex;
+  width: 150px;
+  height: 150px;
+  margin: 0 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: deepskyblue;
+  -webkit-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
+}
+.PaymentsForm{
+  width: 500px;
+  margin: 20px;
+}

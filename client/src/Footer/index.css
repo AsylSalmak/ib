@@ -4,9 +4,10 @@
  justify-content: center;
  align-items: center;
   background-color: #212a33;
+  margin-top: 20px;
 }
 .footer-txt {
-    text-align: center;
+  text-align: center;
   font-size: 12px;
   color: #fff;
   padding: 20px;

@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import Operations from "./Operations";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 import { useSelector } from "react-redux";
-
-
+import { Placeholder } from "semantic-ui-react";
+import { hideLetters } from "../../../../helpers/hideLetters";
 const Tempaltes = () => {
   const [payments, setPayments] = useState([]);
   const [transfers, setTransfers] = useState([]);
   const { accounts, accountsFetched } = useSelector((store) => store.accounts);
+
   useEffect(() => {
     axios({
       method: "get",
@@ -38,76 +39,94 @@ const Tempaltes = () => {
     <div className="Dashboard-block">
       <h4>Мои платежи</h4>
       <div>
-        {accountsFetched ? payments.map((payment, index) => (
-          <div className="paymentCont">
-            <div className="paymentBox">
-              <div className="paymentTxt">
-                <label>{payment.alias}</label>
-                <label>{payment.service}</label>
-                <p>{payment.provider}</p>
+        {accountsFetched ? (
+          payments.map((payment, index) => (
+            <div className="paymentCont">
+              <div className="paymentBox">
+                <div className="paymentTxt">
+                  <label>{payment.alias}</label>
+                  <label>{payment.service}</label>
+                  <p>{payment.provider}</p>
+                </div>
+                <div className="amountBox">
+                  <span>{formatToCurrencyNumber(payment.amount)}</span> {"  "}
+                  <span>{payment.currency}</span>
+                </div>
               </div>
-              <div className="amountBox">
-                <span>{formatToCurrencyNumber(payment.amount)}</span> {"  "}
-                <span>{payment.currency}</span>
+              <div className="linkPaymentBox">
+                <Link className="linkPayment" to="">
+                  Повторить платеж
+                </Link>
               </div>
             </div>
-            <div className="linkPaymentBox">
-              <Link className="linkPayment" to="">
-                Повторить платеж
-              </Link>
-            </div>
-          </div>
-        )):null}
+          ))
+        ) : (
+          <Placeholder style={{ width: "200px", margin: "20px" }} fluid>
+            <Placeholder.Line length="full" />
+            <Placeholder.Line length="very long" />
+            <Placeholder.Line length="full" />
+            <Placeholder.Line length="very long" />
+          </Placeholder>
+        )}
       </div>
       <h4>Мои переводы</h4>
       <div>
-        {accountsFetched ? transfers.map((transfer, index) => (
-          <div className="transfersCont">
-            {transfer.transferType === "internal" ? (
-              <div
-                style={{
-                  width: "50px",
-                  backgroundColor: "#ed6262",
-                  borderBottomRightRadius: "10px",
-                  fontSize: "10px",
-                  color: "#fff",
-                  textAlign: "center",
-                }}
-              >
-                {transfer.transferType}
+        {accountsFetched ? (
+          transfers.map((transfer, index) => (
+            <div className="transfersCont">
+              {transfer.transferType === "internal" ? (
+                <div
+                  style={{
+                    width: "50px",
+                    backgroundColor: "#ed6262",
+                    borderBottomRightRadius: "10px",
+                    fontSize: "10px",
+                    color: "#fff",
+                    textAlign: "center",
+                  }}
+                >
+                  {transfer.transferType}
+                </div>
+              ) : (
+                <div
+                  style={{
+                    width: "50px",
+                    backgroundColor: "#508bdf",
+                    color: "#fff",
+                    borderBottomRightRadius: "10px",
+                    fontSize: "10px",
+                    textAlign: "center",
+                  }}
+                >
+                  {transfer.transferType}
+                </div>
+              )}
+              <div className="transfersBox">
+                <div className="transfersTxt">
+                  <label>{transfer.alias}</label>
+                  <label> {hideLetters(accounts[transfer.from].account)}</label>
+                  <p>{transfer.to}</p>
+                </div>
+                <div className="amountBox">
+                  <span>{formatToCurrencyNumber(transfer.amount)}</span>
+                  {"  "} <span>{transfer.currency}</span>
+                </div>
               </div>
-            ) : (
-              <div
-                style={{
-                  width: "50px",
-                  backgroundColor: "#508bdf",
-                  color: "#fff",
-                  borderBottomRightRadius: "10px",
-                  fontSize: "10px",
-                  textAlign: "center",
-                }}
-              >
-                {transfer.transferType}
-              </div>
-            )}
-            <div className="transfersBox">
-              <div className="transfersTxt">
-                <label>{transfer.alias}</label>
-                <label> {accounts[transfer.from].account}</label>
-                <p>{transfer.to}</p>
-              </div>
-              <div className="amountBox">
-                <span>{formatToCurrencyNumber(transfer.amount)}</span>
-                {"  "} <span>{transfer.currency}</span>
+              <div className="linkTransfersBox">
+                <Link className="linkTransfer" to="">
+                  Повторить перевод
+                </Link>
               </div>
             </div>
-            <div className="linkTransfersBox">
-              <Link className="linkTransfer" to="">
-                Повторить перевод
-              </Link>
-            </div>
-          </div>
-        )): null}
+          ))
+        ) : (
+          <Placeholder style={{ width: "200px", margin: "20px" }} fluid>
+            <Placeholder.Line length="full" />
+            <Placeholder.Line length="very long" />
+            <Placeholder.Line length="full" />
+            <Placeholder.Line length="very long" />
+          </Placeholder>
+        )}
       </div>
       <h4>Последние операции</h4>
       <div className="Dashboard-operations">
@@ -116,4 +135,5 @@ const Tempaltes = () => {
     </div>
   );
 };
+
 export default Tempaltes;

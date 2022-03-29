@@ -31,8 +31,7 @@ const PrivateSections = () => {
   }
 
   return (
-    <Container>
-      <div style={{minHeight:'600px'}}>
+    <Container style = {{minHeight:'1000px'}}>
       <Menu secondary className="privateSection">
         <Menu.Item>
           <NavLink
@@ -42,16 +41,6 @@ const PrivateSections = () => {
             to="/private/dashboard"
           >
             Обзор
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "active-link" : "section-link"
-            }
-            to="/private/accounts"
-          >
-            Счета
           </NavLink>
         </Menu.Item>
         <Menu.Item>
@@ -95,7 +84,7 @@ const PrivateSections = () => {
           </NavLink>
         </Menu.Item>
       </Menu>
-      <Outlet /></div>
+      <Outlet />
     </Container>
   );
 };

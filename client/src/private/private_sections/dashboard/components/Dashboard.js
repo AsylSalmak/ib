@@ -6,13 +6,15 @@ import "./Dashboard.css";
 import logo from "../../../../public/visa.png";
 import Templates from "./Templates";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
+import { hideLetters } from "../../../../helpers/hideLetters";
+
 
 const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);
   const [cards, setCards] = useState([]);
   const [credits, setCredits] = useState([]);
   const [loading, setLoading] = useState(true);
-
+ 
   useEffect(() => {
     axios({
       method: "get",
@@ -94,7 +96,7 @@ const Dashboard = () => {
           <h4>Текущие счета</h4>
           {currentAccounts.map((account, index) => (
             <div className="cardsFilter">
-              <div className="cardsBox">{account.account}</div>
+              <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span> {"  "}
                 <span> {account.currencyCode}</span>
@@ -107,7 +109,7 @@ const Dashboard = () => {
           <h4>Кредиты</h4>
           {credits.map((account, index) => (
             <div className="cardsFilter">
-              <div className="cardsBox">{account.account}</div>
+              <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>
                 {"  "}
