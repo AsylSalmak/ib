@@ -50,7 +50,9 @@
   border-radius: 5px;
 }
 .providerBox {
+  cursor: pointer;
   display: flex;
+  border-radius: 5px;
   width: 150px;
   height: 150px;
   margin: 0 020px;
@@ -62,6 +64,8 @@
 }
 
 .activeProviderBox{
+  border-radius: 5px;
+  cursor: pointer;
   display: flex;
   width: 150px;
   height: 150px;
@@ -76,4 +80,9 @@
 .PaymentsForm{
   width: 500px;
   margin: 20px;
+}
+.PaymentsForm label{
+font-weight: 700;
+font-size: 13px;
+margin-bottom: 10px;
 }

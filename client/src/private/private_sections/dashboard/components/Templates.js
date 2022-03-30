@@ -31,13 +31,13 @@ const Tempaltes = () => {
             break;
         }
       });
-      setPayments(payment);
-      setTransfers(transfer);
+      setPayments(payment.slice(-3));
+      setTransfers(transfer.slice(-3));
     });
   }, []);
   return (
     <div className="Dashboard-block">
-      <h4>Мои платежи</h4>
+      <h4>Шаблоны моих платежей</h4>
       <div>
         {accountsFetched ? (
           payments.map((payment, index) => (

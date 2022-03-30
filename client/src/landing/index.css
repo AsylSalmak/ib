@@ -1,3 +1,4 @@
+
 .section1 {
   display: flex;
   justify-content: center;
@@ -7,7 +8,7 @@
 .section1 h3 {
   font-size: 30px;
   font-weight: 100;
-  color: #0d213a;
+  color: #fff;
 }
 
 .section2 {
