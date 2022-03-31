@@ -1,0 +1,50 @@
+.operations-table {
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+.operations-row {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 12px;
+}
+
+.operations-row > div > span {
+  margin-right: 7px;
+}
+
+.operations-row > div > i {
+  cursor: pointer;
+}
+
+.operations-row > div > i:hover {
+  opacity: 0.7;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.id {
+  flex-basis: 15%;
+}
+.date {
+  flex-basis: 20%;
+}
+
+.type {
+  flex-basis: 15%;
+}
+.from {
+  flex-basis: 15%;
+}
+.details {
+  flex-basis: 20%;
+}
+.amount {
+  flex-basis: 15%;
+}

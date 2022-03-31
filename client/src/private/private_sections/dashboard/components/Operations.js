@@ -13,7 +13,7 @@ const Operations = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "operations",
+      url: "operations/last",
       baseURL: "http://127.0.0.1:3000",
     }).then((response) => {
       setOperations(response.data);
