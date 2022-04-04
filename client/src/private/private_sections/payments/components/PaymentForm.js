@@ -11,9 +11,10 @@ import { useSelector, useDispatch } from "react-redux";
 import "../components/Payments.css";
 import axios from "axios";
 import { SET_ACCOUNTS } from "../../../../accounts/reducer/AccountsReducer";
+import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 
 const PaymentForm = (props) => {
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const { accounts } = useSelector((store) => store.accounts);
   const [selectedAccount, setSelectedAccount] = useState("");
   const [paymentTo, setPaymentTo] = useState("");
@@ -28,7 +29,9 @@ const PaymentForm = (props) => {
 
     return {
       key: accId,
-      text: `${account.account} (${account.balance} ${account.currencyCode})`,
+      text: `${account.account} (${formatToCurrencyNumber(account.balance)} ${
+        account.currencyCode
+      })`,
       value: accId,
     };
   });
@@ -76,10 +79,12 @@ const PaymentForm = (props) => {
           <label>Введите Сумму</label>
           <input
             placeholder="Сумма"
-            type="number"
             value={amount}
             onChange={(e) => {
-              setAmount(e.target.value);
+              let value = e.target.value;
+              value = value.replace(/[^0-9.]/g, "");
+              // value = value.replace(/(\d)(\d{2})$/, "$1. $2")
+              setAmount(value);
             }}
           />
           <Checkbox
@@ -116,8 +121,11 @@ const PaymentForm = (props) => {
             )
           }
           onClick={() => {
-            const balance = accounts[selectedAccount].balance;
-            if (balance < 0 && balance < amount) {
+            const balance = +accounts[selectedAccount].balance;
+            console.log("bal", balance);
+            console.log("amount", amount);
+            // return
+            if (balance < 0 || balance < +amount) {
               setError(true);
               return;
             }
@@ -143,12 +151,18 @@ const PaymentForm = (props) => {
                   url: "accounts",
                   baseURL: "http://127.0.0.1:3000",
                 }).then((response) => {
-                  const accounts = response.data.reduce((previousValue, currentValue) => {
-                    return { ...previousValue, [currentValue.id]: currentValue };
-                  }, {});
+                  const accounts = response.data.reduce(
+                    (previousValue, currentValue) => {
+                      return {
+                        ...previousValue,
+                        [currentValue.id]: currentValue,
+                      };
+                    },
+                    {}
+                  );
                   setTimeout(() => {
-                   props.setServiceId('')
-                  }, 2500);
+                    props.setServiceId("");
+                  }, 1000);
                   dispatch({
                     type: SET_ACCOUNTS,
                     payload: accounts,

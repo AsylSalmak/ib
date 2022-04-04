@@ -48,3 +48,50 @@
 .amount {
   flex-basis: 15%;
 }
+
+.operationsFilterSum {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 100px;
+  background-color: #fff;
+  position:absolute;
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.08);
+  padding: 5px;
+}
+.operationsFilterSumBox {
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+
+}
+.operationsFilterSumBox:hover{
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.operations-table span{
+  margin: 5px;
+  font-size: 14px;
+}
+.operations-table-filter-box{
+  display: flex;
+}
+.operationsFilterType{
+  margin-left: 80px;
+}
+
+.operationsFilterType-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 60px;
+  background-color: #fff;
+  position:absolute;
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.08);
+  padding: 7px;
+  margin-top: 15px;
+}
