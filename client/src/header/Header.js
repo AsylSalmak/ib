@@ -11,17 +11,31 @@ const Header = () => {
 
   return (
     <div className="Header-top">
-      <Container >
-        <Menu secondary >
-          <img src={logo} style={{ width: "150px", height: "70px", margin:'5px' }} />
-          {user.logedIn ?  <Menu.Item ><Link to='./private/dashboard'className="link" >Мой Банк</Link></Menu.Item> : null}
-          <Menu.Item ><a href="#section3">Новости</a></Menu.Item> 
-          <Menu.Item ><Link className="link" to='/' >Услуги</Link></Menu.Item>
-          <Menu.Item ><a href="">Контакты</a></Menu.Item>
-          <Menu.Menu position="right">
+      <Container>
+        <Menu secondary>
+          <img
+            src={logo}
+            style={{ width: "150px", height: "70px", margin: "5px" }}
+          />
+          {user.logedIn ? (
             <Menu.Item>
-              <Input icon="search" placeholder="Search..." />
+              <Link to="./private/dashboard" className="link">
+                Мой Банк
+              </Link>
             </Menu.Item>
+          ) : null}
+          <Menu.Item>
+            <a href="#section3">Новости</a>
+          </Menu.Item>
+          <Menu.Item>
+            <Link className="link" to="/">
+              Услуги
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <a href="">Контакты</a>
+          </Menu.Item>
+          <Menu.Menu position="right">
             <Menu.Item>
               <LoginDropdownMenu />
             </Menu.Item>

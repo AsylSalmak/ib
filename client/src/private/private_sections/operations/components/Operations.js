@@ -5,9 +5,15 @@ import moment from "moment";
 import { hideLetters } from "../../../../helpers/hideLetters";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 import { useSelector } from "react-redux";
-import { Icon, Placeholder, Checkbox, Radio, Form } from "semantic-ui-react";
+import {
+  Icon,
+  Placeholder,
+  Checkbox,
+  Input,
+  Pagination,
+  Popup,
+} from "semantic-ui-react";
 import "../../operations/components/operations.css";
-import { Fade } from "react-bootstrap";
 
 const headers = [
   { title: "Номер", field: "id" },
@@ -30,27 +36,22 @@ const Operations = () => {
   const [operations, setOperations] = useState([]);
   const [sort, setSort] = useState({ field: "id", type: true });
 
-  const [sumFilterBox, setSumFilterBox] = useState(false);
+  //sum filter
   const [sumFilter, setSumFilter] = useState("");
   const [sumFilterText, setSumFilterText] = useState("");
 
-  const [typeFilterBox, setTypeFilterBox] = useState(false);
+  //filter type
   const [selectTypeFilterPayment, setSelectTypeFilterPayment] = useState(false);
   const [selectTypeFilterTransfer, setSelectTypeFilterTransfer] =
     useState(false);
+  //filter search
+  const [searchText, setSearchText] = useState("");
 
-  const ref = useRef();
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [operationsPerPage, setOperationsPerPage] = useState(5);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        console.log('close');
-        setTypeFilterBox(!typeFilterBox);
-      }
-    }
-
-    document.addEventListener("click", handleClickOutside);
-
     axios({
       method: "get",
       url: "operations",
@@ -59,10 +60,8 @@ const Operations = () => {
       setOriginOperations(response.data);
       setOperations(response.data);
     });
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [typeFilterBox]);
+    return () => {};
+  }, []);
 
   useEffect(() => {
     let sortedOperations = [...operations];
@@ -86,7 +85,17 @@ const Operations = () => {
   }, [sort.field, sort.type]);
 
   useEffect(() => {
-    const SumFiltered = originOperations.filter((el) => {
+    console.log("ashdjaksh");
+    let filteredOperations;
+
+    //filter by search
+    filteredOperations = originOperations.filter((el) => {
+      let StrId = el.id.toString();
+      return StrId.startsWith(searchText.toLocaleUpperCase());
+    });
+
+    //filter by sum
+    filteredOperations = filteredOperations.filter((el) => {
       const amount = +el.amount;
       if (sumFilter === "1") {
         return amount <= 10000;
@@ -99,102 +108,134 @@ const Operations = () => {
       }
     });
 
-    if (
-      (!selectTypeFilterPayment && !selectTypeFilterTransfer) ||
-      (selectTypeFilterPayment && selectTypeFilterTransfer)
-    ) {
-      setOperations(SumFiltered);
-      return;
+    if (selectTypeFilterPayment !== selectTypeFilterTransfer) {
+      filteredOperations = filteredOperations.filter((el) => {
+        if (selectTypeFilterPayment) return el.type === "payment";
+        return el.type === "transfer";
+      });
     }
 
-    const TypeFiltered = SumFiltered.filter((el) => {
-      if (selectTypeFilterPayment) return el.type === "payment";
-      return el.type === "transfer";
-    });
-    setOperations(TypeFiltered);
-  }, [sumFilter, selectTypeFilterPayment, selectTypeFilterTransfer]);
+    // setCurrentPage(1);
+
+    setOperations(filteredOperations);
+    setCurrentPage(1);
+  }, [
+    sumFilter,
+    selectTypeFilterPayment,
+    selectTypeFilterTransfer,
+    searchText,
+  ]);
+
+  //pagination
+  console.log(operations.length);
+
+  console.log("currentpage", currentPage);
+
+  console.log("operperpage", operationsPerPage);
+
+  const pageLength = Math.ceil(operations.length / operationsPerPage);
+  const from = (currentPage - 1) * operationsPerPage;
+  const paginatedOperations = operations.slice(from, from + operationsPerPage);
 
   return (
     <div className="operations-table">
       <div className="operations-table-filter-box">
-        {sumFilter ? (
-          <div style={{ marginBottom: "15px" }}>
-            <Icon
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setSumFilter("");
-              }}
-              name="close"
-            />
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={(e) => {
-                setSumFilterBox(!sumFilterBox);
-              }}
-            >
-              {sumFilterText}
-            </span>
-          </div>
-        ) : (
-          <div style={{ marginBottom: "15px" }}>
-            <Icon name="filter" />
-            <span
-              style={{ cursor: "pointer" }}
-              onClick={(e) => {
-                setSumFilterBox(!sumFilterBox);
-              }}
-            >
-              По сумме
-            </span>
-          </div>
-        )}
-        <div className="operationsFilterType">
-          <Icon name="filter" />
-          <span
+        {sumFilterText ? (
+          <Icon
             style={{ cursor: "pointer" }}
-            onClick={() => {
-              setTypeFilterBox(!typeFilterBox);
+            name="close"
+            onClick={(e) => {
+              setSumFilter("");
+              setSumFilterText("");
             }}
-          >
-            По типу
-          </span>
-          {typeFilterBox ? (
-            <div ref={ref} className="operationsFilterType-box">
-              <Checkbox
-                label={"payment"}
-                className="asda"
-                checked={selectTypeFilterPayment}
-                onChange={() => {
-                  setSelectTypeFilterPayment(!selectTypeFilterPayment);
-                }}
-              />
-              <Checkbox
-                label={"transfer"}
-                checked={selectTypeFilterTransfer}
-                onChange={() => {
-                  setSelectTypeFilterTransfer(!selectTypeFilterTransfer);
-                }}
-              />
+          />
+        ) : (
+          <Icon name="filter" />
+        )}
+
+        <Popup
+          content={
+            <div>
+              {sumFilters.map((item) => (
+                <div
+                  key={item.id}
+                  className="sumfilterBox"
+                  onClick={() => {
+                    setSumFilter(item.id);
+                    setSumFilterText(item.text);
+                  }}
+                >
+                  {item.text}
+                </div>
+              ))}
             </div>
-          ) : null}
+          }
+          on="click"
+          pinned
+          trigger={
+            <div>
+              {sumFilterText ? (
+                <div className="sumfilter">
+                  <span style={{ cursor: "pointer" }}>{sumFilterText}</span>
+                </div>
+              ) : (
+                <div className="sumfilter">
+                  <span style={{ cursor: "pointer" }}>По сумме</span>
+                </div>
+              )}
+            </div>
+          }
+          position="bottom left"
+        />
+        <div className="operationsFilterType">
+          <Popup
+            content={
+              <div>
+                <Checkbox
+                  label={"payment"}
+                  checked={selectTypeFilterPayment}
+                  onChange={() => {
+                    setSelectTypeFilterPayment(!selectTypeFilterPayment);
+                  }}
+                />
+                <Checkbox
+                  label={"transfer"}
+                  checked={selectTypeFilterTransfer}
+                  onChange={() => {
+                    setSelectTypeFilterTransfer(!selectTypeFilterTransfer);
+                  }}
+                />
+              </div>
+            }
+            on="click"
+            pinned
+            trigger={
+              <div>
+                <Icon name="filter" />
+                <span style={{ cursor: "pointer" }}>
+                  {selectTypeFilterPayment ? "payment" : null}
+                  {selectTypeFilterTransfer? "transfer": null}
+                  {!selectTypeFilterPayment && !selectTypeFilterTransfer?"По типу": null}
+                </span>
+              </div>
+            }
+            position="bottom left"
+          />
+        </div>
+
+        <div className="operationsSearchBox">
+          <Input
+            value={searchText}
+            onChange={(e) => {
+              let value = e.target.value;
+              value = value.replace(/[^0-9.]/g, "");
+              setSearchText(value);
+            }}
+            icon="search"
+            placeholder="Поиск по номеру..."
+          />
         </div>
       </div>
-      {sumFilterBox ? (
-        <div key={item.id} className="operationsFilterSum">
-          {sumFilters.map((item) => (
-            <div
-              onClick={() => {
-                setSumFilter(item.id);
-                setSumFilterText(item.text);
-                setSumFilterBox(false);
-              }}
-              className="operationsFilterSumBox"
-            >
-              {item.text}
-            </div>
-          ))}
-        </div>
-      ) : null}
       <div className="operations-row header">
         {headers.map((el) => (
           <div key={el.field} className={el.field}>
@@ -211,8 +252,9 @@ const Operations = () => {
           </div>
         ))}
       </div>
+
       {accountsFetched ? (
-        operations.map((operation, index) => (
+        paginatedOperations.map((operation, index) => (
           <div key={operation.id} className="operations-row">
             <div className="id">{operation.id}</div>
             <div className="date">
@@ -240,6 +282,33 @@ const Operations = () => {
           <Placeholder.Line length="very long" />
         </Placeholder>
       )}
+
+      <div>
+        <select
+          onChange={(e) => {
+            setCurrentPage(1);
+            setOperationsPerPage(+e.target.value);
+          }}
+          defaultValue={operationsPerPage}
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={15}>15</option>
+        </select>
+      </div>
+      <div className="operationsPaginationsNumbersBox">
+        <Pagination
+          onPageChange={(e, data) => {
+            console.log(data);
+            setCurrentPage(data.activePage);
+          }}
+          size="mini"
+          activePage={currentPage}
+          firstItem={null}
+          lastItem={null}
+          totalPages={pageLength}
+        />
+      </div>
     </div>
   );
 };
