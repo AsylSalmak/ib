@@ -1,10 +1,13 @@
-
 .section1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
 }
-
+.section1Conteiner {
+  width: 1600px;
+  margin-top: 15px;
+}
 .section1 h3 {
   font-size: 30px;
   font-weight: 100;
@@ -16,7 +19,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px 0;
 }
 
 .section2-box {
@@ -37,6 +39,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 70px;
 }
 .section2-title h2,
 .section2-title p,
@@ -85,13 +88,14 @@
 }
 .section3Box {
   width: 100%;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   padding: 50px 0;
 }
 
-.newsBox1,.newsBox2,.newsBox3 {
+.newsBox1,
+.newsBox2,
+.newsBox3 {
   width: 30%;
   height: 100%;
   margin: 20px;
@@ -102,20 +106,26 @@
   box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
 }
 
-.newsBox1:hover,.newsBox2:hover,.newsBox3:hover{
+.newsBox1:hover,
+.newsBox2:hover,
+.newsBox3:hover {
   color: #3e4041d3;
   cursor: pointer;
 }
-.newsBox1 p,.newsBox2 p,.newsBox3 p{
+.newsBox1 p,
+.newsBox2 p,
+.newsBox3 p {
   font-size: 12px;
   line-height: 15px;
   text-align: center;
   color: #3e4041d3;
 }
-.newsBox1 h6,.newsBox2 h6,.newsBox3 h6{
+.newsBox1 h6,
+.newsBox2 h6,
+.newsBox3 h6 {
   font-size: 15px;
   line-height: 15px;
-  text-align: center; 
+  text-align: center;
 }
 .newsBox-txt {
   width: 100%;
@@ -160,4 +170,183 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url("https://www.nationalbank.kz/image/resize/360/305/data/media/news/images/LyjhwQUu7PGVbKyYMdwn6AYgwsAWCpGYlC4nhTCe.jpg");
+}
+
+.Section4Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+}
+
+.section4-box {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+}
+.calculator-box {
+  margin: 15px;
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.calculator-total-box {
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+}
+.calculator-total-box p{
+  font-size: 14px;
+  color: #3e4041d3;
+}
+.calculator-total-box h5{
+  color: #3e4041d3;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.calculator-date-box,
+.calculator-amount-box {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.calculator-amount-box label,
+.calculator-date-box-input label {
+  width: 200px;
+  font-size: 16px;
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background-color: #4a9aeb;
+  right: 5px;
+}
+.calculator-amount-box-input,
+.calculator-date-box-input {
+  display: flex;
+  justify-content: center;
+  border: none;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color:#4a9aeb;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #4a9aeb;
+  cursor: pointer;
+  margin-top: -14px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+/* All the same stuff for Firefox */
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #4a9aeb;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #4a9aeb;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 10px;
+  border-radius: 3px;
+  background: #c92053;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #23649d;
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type="range"]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #367ebd;
 }

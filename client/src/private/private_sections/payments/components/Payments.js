@@ -10,7 +10,6 @@ const Payments = () => {
   const [serviceId, setServiceId] = useState("");
   const [providers, setProviders] = useState([]);
   const [providerId, setProviderId] = useState("");
-
   useEffect(() => {
     axios({
       method: "get",
@@ -53,7 +52,13 @@ const Payments = () => {
         />
       )}
 
-      {providerId && serviceId ? <PaymentForm setServiceId={setServiceId} serviceId={serviceId} providerId={providerId} /> : null}
+      {providerId && serviceId ? (
+        <PaymentForm
+          setServiceId={setServiceId}
+          serviceId={serviceId}
+          providerId={providerId}
+        />
+      ) : null}
     </div>
   );
 };

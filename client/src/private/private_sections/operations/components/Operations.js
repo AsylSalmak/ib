@@ -85,13 +85,26 @@ const Operations = () => {
   }, [sort.field, sort.type]);
 
   useEffect(() => {
-    console.log("ashdjaksh");
     let filteredOperations;
 
     //filter by search
     filteredOperations = originOperations.filter((el) => {
-      let StrId = el.id.toString();
-      return StrId.startsWith(searchText.toLocaleUpperCase());
+      let StrId = String(el.id);
+      let amountSearch = String(el.amount);
+      let operationsTo = String(el.to);
+      let operationProvider = String(el.provider);
+      return (
+        StrId.toLocaleUpperCase().startsWith(searchText.toLocaleUpperCase()) ||
+        operationsTo
+          .toLocaleUpperCase()
+          .startsWith(searchText.toLocaleUpperCase()) ||
+        operationProvider
+          .toLocaleUpperCase()
+          .startsWith(searchText.toLocaleUpperCase()) ||
+        amountSearch
+          .toLocaleUpperCase()
+          .startsWith(searchText.toLocaleUpperCase())
+      );
     });
 
     //filter by sum
@@ -115,8 +128,6 @@ const Operations = () => {
       });
     }
 
-    // setCurrentPage(1);
-
     setOperations(filteredOperations);
     setCurrentPage(1);
   }, [
@@ -127,11 +138,11 @@ const Operations = () => {
   ]);
 
   //pagination
-  console.log(operations.length);
+  // console.log(operations.length);
 
-  console.log("currentpage", currentPage);
+  // console.log("currentpage", currentPage);
 
-  console.log("operperpage", operationsPerPage);
+  // console.log("operperpage", operationsPerPage);
 
   const pageLength = Math.ceil(operations.length / operationsPerPage);
   const from = (currentPage - 1) * operationsPerPage;
@@ -140,53 +151,51 @@ const Operations = () => {
   return (
     <div className="operations-table">
       <div className="operations-table-filter-box">
-        {sumFilterText ? (
-          <Icon
-            style={{ cursor: "pointer" }}
-            name="close"
-            onClick={(e) => {
-              setSumFilter("");
-              setSumFilterText("");
-            }}
-          />
-        ) : (
-          <Icon name="filter" />
-        )}
-
-        <Popup
-          content={
-            <div>
-              {sumFilters.map((item) => (
-                <div
-                  key={item.id}
-                  className="sumfilterBox"
-                  onClick={() => {
-                    setSumFilter(item.id);
-                    setSumFilterText(item.text);
-                  }}
-                >
-                  {item.text}
-                </div>
-              ))}
-            </div>
-          }
-          on="click"
-          pinned
-          trigger={
-            <div>
-              {sumFilterText ? (
-                <div className="sumfilter">
+        <div className="sumfilter">
+          {" "}
+          {sumFilterText ? (
+            <Icon
+              style={{ cursor: "pointer" }}
+              name="close"
+              onClick={(e) => {
+                setSumFilter("");
+                setSumFilterText("");
+              }}
+            />
+          ) : (
+            <Icon name="filter" />
+          )}
+          <Popup
+            content={
+              <div>
+                {sumFilters.map((item) => (
+                  <div
+                    key={item.id}
+                    className="sumfilterBox"
+                    onClick={() => {
+                      setSumFilter(item.id);
+                      setSumFilterText(item.text);
+                    }}
+                  >
+                    {item.text}
+                  </div>
+                ))}
+              </div>
+            }
+            on="click"
+            pinned
+            trigger={
+              <div>
+                {sumFilterText ? (
                   <span style={{ cursor: "pointer" }}>{sumFilterText}</span>
-                </div>
-              ) : (
-                <div className="sumfilter">
+                ) : (
                   <span style={{ cursor: "pointer" }}>По сумме</span>
-                </div>
-              )}
-            </div>
-          }
-          position="bottom left"
-        />
+                )}
+              </div>
+            }
+            position="bottom left"
+          />
+        </div>
         <div className="operationsFilterType">
           <Popup
             content={
@@ -213,9 +222,11 @@ const Operations = () => {
               <div>
                 <Icon name="filter" />
                 <span style={{ cursor: "pointer" }}>
-                  {selectTypeFilterPayment ? "payment" : null}
-                  {selectTypeFilterTransfer? "transfer": null}
-                  {!selectTypeFilterPayment && !selectTypeFilterTransfer?"По типу": null}
+                  {selectTypeFilterPayment ? "payment " : null}
+                  {selectTypeFilterTransfer ? "transfer" : null}
+                  {!selectTypeFilterPayment && !selectTypeFilterTransfer
+                    ? "По типу"
+                    : null}
                 </span>
               </div>
             }
@@ -224,15 +235,28 @@ const Operations = () => {
         </div>
 
         <div className="operationsSearchBox">
+          <div className="operationsSelectBox">
+            <label>Отоброжать по </label>
+            <select
+              className="operationsSelect"
+              onChange={(e) => {
+                setCurrentPage(1);
+                setOperationsPerPage(+e.target.value);
+              }}
+              defaultValue={operationsPerPage}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+            </select>
+          </div>
           <Input
             value={searchText}
             onChange={(e) => {
-              let value = e.target.value;
-              value = value.replace(/[^0-9.]/g, "");
-              setSearchText(value);
+              setSearchText(e.target.value);
             }}
             icon="search"
-            placeholder="Поиск по номеру..."
+            placeholder="Поиск..."
           />
         </div>
       </div>
@@ -264,7 +288,7 @@ const Operations = () => {
             <div className="from">
               {hideLetters(accounts[operation.from].account)}
             </div>
-            <div className="details">
+            <div className="to ">
               {operation.to +
                 (operation.provider ? ` (${operation.provider})` : "")}
             </div>
@@ -283,24 +307,10 @@ const Operations = () => {
         </Placeholder>
       )}
 
-      <div>
-        <select
-          onChange={(e) => {
-            setCurrentPage(1);
-            setOperationsPerPage(+e.target.value);
-          }}
-          defaultValue={operationsPerPage}
-        >
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={15}>15</option>
-        </select>
-      </div>
       <div className="operationsPaginationsNumbersBox">
         <Pagination
           onPageChange={(e, data) => {
-            console.log(data);
-            setCurrentPage(data.activePage);
+                setCurrentPage(data.activePage);
           }}
           size="mini"
           activePage={currentPage}

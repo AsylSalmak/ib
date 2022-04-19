@@ -1,0 +1,300 @@
+.externalTransfersBox,
+.internalTransfersBox,
+.conversionBox {
+  display: flex;
+  align-items: center;
+  flex-basis: 22%;
+  height: 60px;
+  border: 1px solid #939799d3;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.externalTransfersBox:hover,
+.internalTransfersBox:hover,
+.conversionBox:hover {
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
+}
+.externalTransfersBox p,
+.internalTransfersBox p,
+.conversionContent p {
+  margin-left: 15px;
+  font-size: 14px;
+  color: #3e4041d3;
+}
+.externalTransfersContent,
+.internalTransfersContent,
+.conversionContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  /* -webkit-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2); */
+  /* -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2); */
+  /* box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);  */
+}
+.externalTransfers,
+.internalTransfers,
+.conversion {
+  margin-top: 50px;
+}
+
+/* 
+internalTransfersTitle
+ */
+.Cardform {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 42%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+
+.Cardform label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.CardformSelect {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #2daad0d3;
+  color: #fff;
+  font-size: 16px;
+  text-align: start;
+  cursor: pointer;
+}
+
+.CardformSelect:hover {
+  cursor: pointer;
+  border: #3e4041d3 2px solid;
+}
+
+.CardformSelect option {
+  background-color: #2daad0d3;
+}
+.TransferForm {
+  margin-top: 30px;
+  display: flex;
+  height: 350px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.TransfersFormIcon {
+  margin-top: 50px;
+}
+.SumForm {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  margin-top: 10px;
+  align-items: center;
+  width: 30%;
+  height: 150px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+.SumForm label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.SumFormConteiner {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.TransferCardForm {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 42%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+
+.TransferCardForm label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.TransferCardFormInputBox {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+.TransferCardFormInput {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.TransferAtmNumber {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 42%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+
+.TransferAtmNumber label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.TransferMobileNumber {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 42%;
+  height: 230px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+
+.TransferMobileNumber label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.TransferMobileNumberButtonBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.CardAccountform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: 42%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+.CardAccountformChekbox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+.ConversionAccount {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ConversionAccountBox {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 42%;
+  height: 230px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+.ConversionAccountBox label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+}
+
+.ConversionAccountBox > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.CardOfAnyBank {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 42%;
+  height: 120px;
+  border-radius: 5px;
+  background-color: #e0e8ecd3;
+}
+.CardOfAnyBank label {
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.CardOfAnyBankInput {
+  border: none;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #2daad0d3;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+.CardOfAnyBankInput::placeholder {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+.CardOfAnyBankInput:hover {
+  cursor: pointer;
+  border: #3e4041d3 2px solid;
+}
+.TransferArchive {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 8%);
+  border-radius: 8px;
+}
+.TransferArchive-label {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 20px;
+}
+.TransferArchive-from {
+  flex-basis: 15%;
+}
+.TransferArchive-to {
+  flex-basis: 20%;
+}
+.TransferArchive-date {
+  flex-basis: 20%;
+}
+.TransferArchive-amount {
+  flex-basis: 20%;
+}
+.TransferArchive-id {
+  flex-basis: 20%;
+}

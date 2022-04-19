@@ -6,7 +6,7 @@ import Dashboard from "../private/private_sections/dashboard/components/Dashboar
 import Profile from "../private/private_sections/profile/components/Profile";
 import Header from "../header/Header";
 import Payments from "../private/private_sections/payments/components/Payments";
-import Transfers from "../private/private_sections/transfers/components/Transfers";
+import Transfers from "../private/private_sections/transfers/components/TransferContainer";
 import Operations from "../private/private_sections/operations/components/Operations";
 import Footer from "../Footer/Footer";
 const ApplicationRouter = () => {

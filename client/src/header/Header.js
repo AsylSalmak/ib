@@ -1,16 +1,15 @@
 import React from "react";
-import { Input, Menu, Container } from "semantic-ui-react";
+import { Menu, Container } from "semantic-ui-react";
 import LoginDropdownMenu from "../landing/LoginDropdownMenu";
-import logo from "../public/pngwing2.png";
+import logo from "../public/pngwing3.png";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./index.css";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
-
   return (
-    <div className="Header-top">
+    <div className="Header">
       <Container>
         <Menu secondary>
           <img

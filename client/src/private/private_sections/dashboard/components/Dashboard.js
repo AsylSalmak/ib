@@ -13,8 +13,9 @@ const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);
   const [cards, setCards] = useState([]);
   const [credits, setCredits] = useState([]);
+  const [deposit, setDeposit] = useState([]);
   const [loading, setLoading] = useState(true);
- 
+ console.log(deposit)
   useEffect(() => {
     axios({
       method: "get",
@@ -25,6 +26,7 @@ const Dashboard = () => {
       const credits = [];
       const current = [];
       const cards = [];
+      const deposit = [];
       response.data.forEach((account) => {
         switch (account.type) {
           case "credit":
@@ -36,11 +38,15 @@ const Dashboard = () => {
           case "account":
             current.push(account);
             break;
+          case "deposit":
+            deposit.push(account);
+              break;
         }
       });
       setCurrenAccounts(current);
       setCards(cards);
       setCredits(credits);
+      setDeposit(deposit);
     });
   }, []);
 
@@ -108,6 +114,19 @@ const Dashboard = () => {
         <div className="Dashboard-block1-itemBox">
           <h4>Кредиты</h4>
           {credits.map((account, index) => (
+            <div className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
+                <span> {formatToCurrencyNumber(account.balance)}</span>
+                {"  "}
+                <span> {account.currencyCode}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="Dashboard-block1-itemBox">
+          <h4>Депозиты</h4>
+          {deposit.map((account, index) => (
             <div className="cardsFilter">
               <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">

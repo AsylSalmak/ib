@@ -6,10 +6,10 @@ import { Button } from "semantic-ui-react";
 const CarouselBox = () => {
   return (
     <Carousel style={{ width: "100%", padding:'0 0' }}>
-      <Carousel.Item  style={{ height: "600px" }}>
+      <Carousel.Item  style={{ height: "600px"}}>
         <img
           className="d-flex w-100 h-100 position-absolute top-0 end-0"
-          src="https://aif-s3.aif.ru/images/026/628/20a6f5a3807dd797b788b2a5088be666.jpg"
+          src="https://images.wallpaperscraft.ru/image/single/dengi_dollary_shapka_195868_2560x1440.jpg"
           alt="First slide"
         />
         <Carousel.Caption
@@ -43,7 +43,7 @@ const CarouselBox = () => {
       <Carousel.Item style={{ height: "600px" }}>
         <img
           className="d-flex w-100 h-100 position-absolute top-0 end-0"
-          src="https://avatars.mds.yandex.net/get-zen_doc/3737694/pub_61c97f66c2b8ed4a1a5c5fc0_61c9805defcf5a414d7c3f4c/scale_2400"
+          src="https://images.wallpaperscraft.ru/image/single/gorod_ulica_doma_trotuar_58870_1920x1080.jpg"
           alt="Second slide"
         />
         <Carousel.Caption
@@ -77,7 +77,7 @@ const CarouselBox = () => {
       <Carousel.Item style={{ height: "600px" }}>
         <img
           className="d-flex w-100 h-100 position-absolute top-0 end-0"
-          src="https://www.westernalliancebancorporation.com/-/media/images/bank-of-nevada/home/bon-hero-carousel-accountability.jpg"
+          src="https://images.wallpaperscraft.ru/image/single/skala_deti_art_127199_2560x1080.jpg"
           alt=" slide"
         />
         <Carousel.Caption
@@ -111,7 +111,7 @@ const CarouselBox = () => {
       <Carousel.Item style={{ height: "600px" }}>
         <img
           className="d-flex w-100 h-100 position-absolute top-0 end-0"
-          src="https://www.westernalliancebancorporation.com/-/media/images/bank-division-pages_shared/home/bank-on-accountability-heroes/econ-forum-2021-hero.jpg"
+          src="https://images.wallpaperscraft.ru/image/single/karta_chertezh_mir_svet_linii_20146_1920x1080.jpg"
           alt=" slide"
         />
         <Carousel.Caption

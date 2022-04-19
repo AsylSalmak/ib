@@ -7,14 +7,17 @@
   padding: 0.78571429em 0.92857143em;
   margin: 0 0.35714286em;
   border-radius: 4px;
-  color: #fff;
+  color: #3f4a58;
   font-size: 15px;
+  
 }
-.Header-top {
-  background-color:#233a52;
+.Header {
+  background-color:#fff;
   height: 100%;
   box-sizing: border-box;
-  box-shadow: #647588 1px 1px 10px 1px;
+  -webkit-box-shadow: 0px 8px 10px -1px rgba(102, 140, 169, 0.42);
+-moz-box-shadow: 0px 8px 10px -1px rgba(102, 140, 169, 0.42);
+box-shadow: 0px 8px 10px -1px rgba(102, 140, 169, 0.42);
   position: sticky;
   top: 0;
   z-index: 3;
@@ -28,12 +31,12 @@
 .link:hover {
   color: #4183c4;
 }
-.Header-top a {
+.Header a {
   text-decoration: none;
-  color: #fff;
+  color: #3f4a58;
   font-size: 15px;
 }
 
-.Header-top a:hover {
+.Header a:hover {
   color: #4183c4;
 }

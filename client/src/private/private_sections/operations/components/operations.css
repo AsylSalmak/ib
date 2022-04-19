@@ -42,7 +42,8 @@
 .from {
   flex-basis: 15%;
 }
-.details {
+
+.to {
   flex-basis: 20%;
 }
 .amount {
@@ -50,26 +51,29 @@
 }
 
 .operations-table span {
-  margin: 5px;
   font-size: 14px;
 }
 .operations-table-filter-box {
   display: flex;
 }
+
+.operationsSearchBox {
+  flex-basis: 65%;
+  display: flex;
+  justify-content:space-between;
+  padding-right: 50px;
+}
 .operationsFilterType {
   flex-basis: 20%;
 }
-
-.operationsSearchBox {
-  flex-basis: 60%;
+.sumfilter{
+  flex-basis: 15%;
   display: flex;
-  justify-content: end;
-  padding-right: 50px;
-}
-
+  }
 .operations-table-filter-box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
 }
 
@@ -80,7 +84,6 @@
 }
 
 .sumfilterBox{
-  margin-top: 5px;
   text-align: center;
   cursor: pointer;
   width: 150px;
@@ -89,7 +92,16 @@
   font-size: 16px;
 }
 
-.sumfilter{
- width: 150px;
- margin-right: 50px;
+.operationsSelect{
+  border: none;
+}
+
+.operationsSelect option{
+  border: none;
+}
+.operationsSelectBox{
+  display: flex;
+  width: 150px;
+  align-items:center;
+  justify-content:start;
 }

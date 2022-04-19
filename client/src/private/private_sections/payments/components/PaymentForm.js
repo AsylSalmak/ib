@@ -26,7 +26,6 @@ const PaymentForm = (props) => {
   const [success, setSuccess] = useState(false);
   const options = Object.keys(accounts).map((accId) => {
     const account = accounts[accId];
-
     return {
       key: accId,
       text: `${account.account} (${formatToCurrencyNumber(account.balance)} ${
@@ -35,7 +34,6 @@ const PaymentForm = (props) => {
       value: accId,
     };
   });
-
   return (
     <div className="PaymentsForm">
       <Form>
@@ -122,8 +120,8 @@ const PaymentForm = (props) => {
           }
           onClick={() => {
             const balance = +accounts[selectedAccount].balance;
-            console.log("bal", balance);
-            console.log("amount", amount);
+            // console.log("bal", balance);
+            // console.log("amount", amount);
             // return
             if (balance < 0 || balance < +amount) {
               setError(true);
