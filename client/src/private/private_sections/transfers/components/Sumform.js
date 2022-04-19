@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button } from "semantic-ui-react";
 import axios from "axios";
 import NumberFormat from "react-number-format";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_ACCOUNTS } from "../../../../accounts/reducer/AccountsReducer";
-
+import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 const chekTransferTo = (transferTo, transferId) => {
   switch (transferId) {
     case "card_to_card":
@@ -19,25 +19,72 @@ const chekTransferTo = (transferTo, transferId) => {
       return transferTo.length === 3;
   }
 };
+
 const Sumform = (props) => {
   const { accounts } = useSelector((store) => store.accounts);
 
   const [amount, setAmount] = useState("");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-
+  const [conversion, setConversion] = useState('');
   const balance = accounts[props.selectedAccount]
     ? accounts[props.selectedAccount].balance
     : 0;
+  const currencyCode1 = accounts[props.selectedAccount]
+    ? accounts[props.selectedAccount].currencyCode
+    : 0;
+
+  const currencyCode2 = accounts[props.transferTo]
+    ? accounts[props.transferTo].currencyCode
+    : 0;
+
+  // console.log(props.selectedAccount);
+  // console.log(props.transferTo);
+
+  useEffect(() => {
+    if (props.transferId === "conversion_account") {
+
+      let conversion;
+      if (currencyCode1 === "KZT" && currencyCode2 === "USD") {
+        conversion = amount / 453;
+      }
+      if (currencyCode1 === "USD" && currencyCode2 === "KZT") {
+        conversion = amount * 453;
+      }
+      if (currencyCode1 === "KZT" && currencyCode2 === "RUB") {
+        conversion = amount / 5.43;
+      }
+      if (currencyCode1 === "RUB" && currencyCode2 === "KZT") {
+        conversion = amount * 5.43;
+      }
+      if (currencyCode1 === "RUB" && currencyCode2 === "USD") {
+        conversion = amount / 79;
+      }
+      if (currencyCode1 === "USD" && currencyCode2 === "RUB") {
+        conversion = amount * 79;
+      }
+      setConversion(conversion)
+    }
+  }, [currencyCode2, currencyCode1, amount]);
 
   return (
     <div className="SumFormConteiner">
       <div className="SumForm">
-        <label>Сумма</label>
+        {props.transferId === "conversion_account" ? (
+          <p>
+            {`Вы собираетесь конвертировать ${formatToCurrencyNumber(
+              conversion
+            )}${currencyCode2}`}
+          </p>
+        ) : (
+          <label>"Сумма" </label>
+        )}
+
         <NumberFormat
           onChange={(e) => {
             let value = e.target.value;
             value = +value.replace(/[^0-9.]/g, "");
+            console.log(value);
             setAmount(value);
           }}
           value={amount}
@@ -46,22 +93,22 @@ const Sumform = (props) => {
           customInput={Input}
           format={
             amount.toString().length === 2
-              ? "## # KZT"
+              ? `## # ${currencyCode1}`
               : amount.toString().length === 3
-              ? "# ### KZT"
+              ? `# ### ${currencyCode1}`
               : amount.toString().length === 4
-              ? "# #### KZT"
+              ? `# #### ${currencyCode1}`
               : amount.toString().length === 5
-              ? "## #### KZT"
+              ? `## #### ${currencyCode1}`
               : amount.toString().length === 6
-              ? "### ### # KZT"
+              ? `### ### # ${currencyCode1}`
               : amount.toString().length === 7
-              ? "# ### #### KZT"
+              ? `# ### #### ${currencyCode1}`
               : amount.toString().length === 8
-              ? "## ### #### KZT"
+              ? `## ## #### ${currencyCode1}`
               : amount.toString().length === 9
-              ? "### ### ### KZT"
-              : "## KZT"
+              ? `### ### ### ${currencyCode1}`
+              : `## ${currencyCode1}`
           }
         />
 
@@ -88,7 +135,11 @@ const Sumform = (props) => {
             setLoading(true);
             axios({
               method: "post",
-              url: "transfers/proceed",
+              url: `${
+                props.transferId === "conversion_account"
+                  ? "conversion"
+                  : "transfers"
+              }/proceed`,
               baseURL: "http://127.0.0.1:3000",
               data: {
                 amount: amount,
@@ -118,7 +169,9 @@ const Sumform = (props) => {
             });
           }}
         >
-          Перевести
+          {props.transferId === "conversion_account"
+            ? "Конвертировать"
+            : "Перевести"}
         </Button>
       </div>
     </div>

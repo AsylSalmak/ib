@@ -204,32 +204,6 @@ internalTransfersTitle
   align-items: center;
   margin-top: 20px;
 }
-.ConversionAccount {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.ConversionAccountBox {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 42%;
-  height: 230px;
-  border-radius: 5px;
-  background-color: #e0e8ecd3;
-}
-.ConversionAccountBox label {
-  color: rgb(85, 85, 85);
-  font-size: 16px;
-}
-
-.ConversionAccountBox > div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px;
-}
 
 .CardOfAnyBank {
   padding: 10px;

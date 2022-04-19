@@ -1,6 +1,5 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
-// import NumberFormat from "react-number-format";
 
 const Transfers = (props) => {
   return (
@@ -12,6 +11,7 @@ const Transfers = (props) => {
         <div className="externalTransfersContent">
           {props.externalTransfers.map((el) => (
             <div
+              key={el.id}
               onClick={() => {
                 props.setTransferFormLabel(el.label);
                 props.setTransfersId(el.id);
@@ -31,6 +31,7 @@ const Transfers = (props) => {
         <div className="internalTransfersContent">
           {props.internalTransfers.map((el) => (
             <div
+              key={el.id}
               className="internalTransfersBox"
               onClick={() => {
                 props.setTransfersId(el.id);
@@ -50,6 +51,7 @@ const Transfers = (props) => {
         <div className="conversionContent">
           {props.conversion.map((el) => (
             <div
+              key={el.id}
               onClick={() => {
                 props.setTransfersId(el.id);
                 props.setTransferFormLabel(el.label);

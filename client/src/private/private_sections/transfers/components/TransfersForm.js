@@ -7,7 +7,6 @@ import TransferCardForm from "./TransferCardForm";
 import TransferAtmNumber from "./TransferAtmNumber";
 import TransferMobileNumber from "./TransferMobileNumber";
 import CardAccountform from "./CardAccountform";
-import ConversionAccount from "./ConversionAccount";
 import { useSelector } from "react-redux";
 import Messages from "./Messages";
 
@@ -16,7 +15,9 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
   const [selectedAccount, setSelectedAccount] = useState("");
   const [transferTo, setTransferTo] = useState("");
   const [filtered, setFiltered] = useState([]);
+  const [currencyConversion, setCurrencyConversion] = useState([]);
   const accountsArray = Object.values(accounts);
+
   const accountsCard = accountsArray.filter((el) => {
     return el.type === "card";
   });
@@ -26,6 +27,22 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
   const deposit = accountsArray.filter((el) => {
     return el.type === "deposit";
   });
+
+  useEffect(() => {
+    if (
+      accountsArray.length &&
+      selectedAccount &&
+      transferId === "conversion_account"
+    ) {
+      let currencyCode = accountsArray.filter((el) => {
+        return el.currencyCode !== accounts[selectedAccount].currencyCode;
+      });
+      setCurrencyConversion(currencyCode);
+      setTransferTo(currencyCode[0].id);
+    }
+   
+  }, [selectedAccount, accountsArray.length]);
+
   useEffect(() => {
     if (accountsArray.length && transferId === "internal_transfer") {
       const filtered = accountsCard.filter((el) => {
@@ -108,7 +125,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
-             label={"Выберите карту"}
+              label={"Выберите карту"}
               options={accountsCard}
               setSelectedAccount={setSelectedAccount}
             />
@@ -126,7 +143,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
-            label={"Выберите карту"}
+              label={"Выберите карту"}
               selectedAccount={selectedAccount}
               options={accountsCard}
               setSelectedAccount={setSelectedAccount}
@@ -147,8 +164,8 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
-             label={"Выберите карту"}
-             options={accountsCard}
+              label={"Выберите карту"}
+              options={accountsCard}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -165,7 +182,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
-                 label={"Выберите счет"}
+              label={"Выберите счет"}
               options={accountsCard}
               setSelectedAccount={setSelectedAccount}
             />
@@ -173,7 +190,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
               <Icon name="angle right" size="big" />
             </div>
             <AccountSelect
-             label={"Выберите карту"}
+              label={"Выберите карту"}
               options={filteredAccount}
               setSelectedAccount={setTransferTo}
             />
@@ -183,7 +200,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
-            label={"Выберите депозитный счет"}
+              label={"Выберите депозитный счет"}
               options={deposit}
               setSelectedAccount={setSelectedAccount}
             />
@@ -209,14 +226,30 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
               <Icon name="angle right" size="big" />
             </div>
             <AccountSelect
-            label={"Выберите депозитный счет"}
+              label={"Выберите депозитный счет"}
               options={deposit}
               setSelectedAccount={setTransferTo}
             />
           </>
         );
       case "conversion_account":
-        return <ConversionAccount />;
+        return (
+          <>
+            <AccountSelect
+              label={"Выберите счет"}
+              options={accountsArray}
+              setSelectedAccount={setSelectedAccount}
+            />
+            <div className="TransfersFormIcon">
+              <Icon name="angle right" size="big" />
+            </div>
+            <AccountSelect
+              label={"Выберите счет"}
+              options={currencyConversion}
+              setSelectedAccount={setTransferTo}
+            />
+          </>
+        );
       case "Messages":
         return <Messages />;
     }

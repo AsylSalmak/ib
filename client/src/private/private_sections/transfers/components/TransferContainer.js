@@ -3,7 +3,7 @@ import { Menu } from "semantic-ui-react";
 import Transfers from "./Transfers";
 import TransfersForm from "./TransfersForm";
 import "../components/Transfers.css";
-import TransferArchive from './TransferArchive'
+import TransferArchive from "./TransferArchive";
 const externalTransfers = [
   {
     id: "card_to_card",
@@ -44,17 +44,7 @@ const internalTransfers = [
 ];
 
 const conversion = [
-  { id: "conversion_account", icon: "cc mastercard", label: "По счетам" },
-  {
-    id: "conversion_multi_card",
-    icon: "sync",
-    label: "По мультивалютной карте",
-  },
-  {
-    id: "conversion_multi_deposit",
-    icon: "retweet",
-    label: "По мультивалютному депозиту",
-  },
+  { id: "conversion_account", icon: "sync", label: "По счетам" }
 ];
 
 const TransferContainer = () => {
