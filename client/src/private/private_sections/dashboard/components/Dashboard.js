@@ -1,13 +1,13 @@
-import React from 'react';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Placeholder } from 'semantic-ui-react';
-import './Dashboard.css';
-import logo from '../../../../public/visa.png';
-import Templates from './Templates';
-import { formatToCurrencyNumber } from '../../../../helpers/numbers';
-import { hideLetters } from '../../../../helpers/hideLetters';
-import { API_URL } from '../../../../config';
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Placeholder } from "semantic-ui-react";
+import "./Dashboard.css";
+import logo from "../../../../public/visa.png";
+import Templates from "./Templates";
+import { formatToCurrencyNumber } from "../../../../helpers/numbers";
+import { hideLetters } from "../../../../helpers/hideLetters";
+import { API_URL } from "../../../../config";
 
 const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);
@@ -19,31 +19,31 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios({
-      method: 'get',
-      url: 'accounts',
+      method: "get",
+      url: "accounts",
       baseURL: API_URL,
-    }).then(response => {
+    }).then((response) => {
       setLoading(false);
       const credits = [];
       const current = [];
       const cards = [];
       const deposit = [];
       const currencyAccount = [];
-      response.data.forEach(account => {
+      response.data.forEach((account) => {
         switch (account.type) {
-          case 'credit':
+          case "credit":
             credits.push(account);
             break;
-          case 'card':
+          case "card":
             cards.push(account);
             break;
-          case 'account':
+          case "account":
             current.push(account);
             break;
-          case 'deposit':
+          case "deposit":
             deposit.push(account);
             break;
-          case 'currency':
+          case "currency":
             currencyAccount.push(account);
             break;
         }
@@ -57,39 +57,39 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className='Dashboard-container'>
-      <div className='Dashboard-block-1'>
+    <div className="Dashboard-container">
+      <div className="Dashboard-block-1">
         <h4>Мои счета</h4>
-        <div className='Dashboard-block1-itemBox'>
+        <div className="Dashboard-block1-itemBox">
           <h4>Карты</h4>
           {loading ? (
-            <div className='dashboard-loader'>
-              <Placeholder style={{ width: '90%', margin: '20px' }} fluid>
-                <Placeholder.Line length='full' />
-                <Placeholder.Line length='very long' />
-                <Placeholder.Line length='full' />
-                <Placeholder.Line length='very long' />
+            <div className="dashboard-loader">
+              <Placeholder style={{ width: "90%", margin: "20px" }} fluid>
+                <Placeholder.Line length="full" />
+                <Placeholder.Line length="very long" />
+                <Placeholder.Line length="full" />
+                <Placeholder.Line length="very long" />
               </Placeholder>
             </div>
           ) : (
             <div>
               {cards.length ? (
                 cards.map((account, index) => (
-                  <div key={account.id} className='cardsFilter'>
-                    <div className='cardsBox1'>
-                      <div className='cardsNumber'>{account.cardNumber}</div>
-                      <div className='cardsDate'>
+                  <div key={account.id} className="cardsFilter">
+                    <div className="cardsBox1">
+                      <div className="cardsNumber">{account.cardNumber}</div>
+                      <div className="cardsDate">
                         {account.expirationDate}
                         <img src={logo} />
                       </div>
                     </div>
-                    <div className='cardsBox'>
+                    <div className="cardsBox">
                       <label>{account.alias}</label>
                     </div>
-                    <div className='cardsBox'>
+                    <div className="cardsBox">
                       <label>Баланс</label>
                       <div>
-                        <span>{formatToCurrencyNumber(account.balance)}</span>{' '}
+                        <span>{formatToCurrencyNumber(account.balance)}</span>{" "}
                         <span>{account.currencyCode}</span>
                       </div>
                     </div>
@@ -101,52 +101,52 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-        <div className='Dashboard-block1-itemBox'>
+        <div className="Dashboard-block1-itemBox">
           <h4>Текущие счета</h4>
           {currentAccounts.map((account, index) => (
-            <div key={account.id} className='cardsFilter'>
-              <div className='cardsBox'>{hideLetters(account.account)}</div>
-              <div className='cardsBox'>
-                <span> {formatToCurrencyNumber(account.balance)}</span> {'  '}
+            <div key={account.id} className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
+                <span> {formatToCurrencyNumber(account.balance)}</span> {"  "}
                 <span> {account.currencyCode}</span>
               </div>
             </div>
           ))}
         </div>
-        <div className='Dashboard-block1-itemBox'>
+        <div className="Dashboard-block1-itemBox">
           <h4>Кредиты</h4>
           {credits.map((account, index) => (
-            <div key={account.id} className='cardsFilter'>
-              <div className='cardsBox'>{hideLetters(account.account)}</div>
-              <div className='cardsBox'>
+            <div key={account.id} className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>
-                {'  '}
+                {"  "}
                 <span> {account.currencyCode}</span>
               </div>
             </div>
           ))}
         </div>
-        <div className='Dashboard-block1-itemBox'>
+        <div className="Dashboard-block1-itemBox">
           <h4>Депозиты</h4>
           {deposit.map((account, index) => (
-            <div key={account.id} className='cardsFilter'>
-              <div className='cardsBox'>{hideLetters(account.account)}</div>
-              <div className='cardsBox'>
+            <div key={account.id} className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>
-                {'  '}
+                {"  "}
                 <span> {account.currencyCode}</span>
               </div>
             </div>
           ))}
         </div>
-        <div className='Dashboard-block1-itemBox'>
+        <div className="Dashboard-block1-itemBox">
           <h4>Валютные счета</h4>
           {currencyAccount.map((account, index) => (
-            <div key={account.id} className='cardsFilter'>
-              <div className='cardsBox'>{hideLetters(account.account)}</div>
-              <div className='cardsBox'>
+            <div key={account.id} className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>
-                {'  '}
+                {"  "}
                 <span> {account.currencyCode}</span>
               </div>
             </div>

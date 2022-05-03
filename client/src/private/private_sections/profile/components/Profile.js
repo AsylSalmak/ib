@@ -24,7 +24,6 @@ const userData = {
 
 const checkData = (data) => {
   const dataValues = Object.values(data);
-
   return dataValues.every((value) => value);
 };
 
@@ -86,13 +85,7 @@ const Profile = () => {
   return (
     <div className="Profile">
       <div className="ProfileTitle">
-        {checkData(editableData) ? (
-          <h4>Ваш профиль</h4>
-        ) : (
-          <Message size="mini" style={{ width: "40%" }} warning>
-            <Message.Header>Пожалуйста заполните все поля!</Message.Header>
-          </Message>
-        )}
+        <h4>Ваш профиль</h4>
       </div>
       {renderFields(isEditing)}
       {isEditing ? (
@@ -148,6 +141,12 @@ const Profile = () => {
           style={{ width: "180px", height: "50px", marginTop: "20px" }}
         />
       )}
+
+      {isEditing && !checkData(editableData) ? (
+        <Message size="mini" style={{ width: "40%" }} warning>
+          <Message.Header>Пожалуйста заполните все поля!</Message.Header>
+        </Message>
+      ) : null}
     </div>
   );
 };

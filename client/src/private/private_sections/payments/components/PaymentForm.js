@@ -26,7 +26,8 @@ const PaymentForm = (props) => {
   const [isTemplate, setIsTemplate] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-
+  const [loader, setLoader] = useState(false);
+  console.log(loader);
   let options = Object.keys(accounts).map((accId) => {
     const account = accounts[accId];
     return {
@@ -139,6 +140,7 @@ const PaymentForm = (props) => {
 
         <Button
           color="blue"
+          loading={loader}
           disabled={
             !(
               selectedAccount &&
@@ -157,7 +159,7 @@ const PaymentForm = (props) => {
               return;
             }
             setError(false);
-
+            setLoader(true);
             axios({
               method: "post",
               url: "payments/proceed",
@@ -172,7 +174,8 @@ const PaymentForm = (props) => {
               },
             })
               .then((response) => {
-                setSuccess(true);
+                setSuccess(false);
+                setLoader(false);
                 axios({
                   method: "get",
                   url: "accounts",

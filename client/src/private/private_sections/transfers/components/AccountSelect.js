@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { hideLetters } from "../../../../helpers/hideLetters";
 import "../components/Transfers.css";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
@@ -9,13 +9,11 @@ const AccountSelect = ({
   setSelectedAccount,
   label,
 }) => {
-
-  useEffect(()=>{
-    if (options.length){
-      setSelectedAccount(options[0].id)
+  useEffect(() => {
+    if (options.length) {
+      setSelectedAccount(options[0].id);
     }
-  }, [options.length])
-
+  }, [options.length]);
 
   return (
     <div className="Cardform">
