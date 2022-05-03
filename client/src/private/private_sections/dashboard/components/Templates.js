@@ -17,7 +17,7 @@ const Tempaltes = () => {
     axios({
       method: "get",
       url: "templates",
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then((response) => {
       const payment = [];
       const transfer = [];
@@ -74,7 +74,7 @@ const Tempaltes = () => {
         {accountsFetched ? (
           transfers.map((transfer, index) => (
             <div className="transfersCont">
-              
+
               {transfer.transferType === "internal" ? (
                 <div
                 key={transfer.id}

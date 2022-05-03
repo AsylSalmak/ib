@@ -20,7 +20,7 @@ const Dashboard = () => {
     axios({
       method: "get",
       url: "accounts",
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then((response) => {
       setLoading(false);
       const credits = [];

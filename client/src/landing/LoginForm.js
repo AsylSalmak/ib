@@ -63,7 +63,7 @@ const LoginForm = () => {
           axios({
             method: "post",
             url: "auth",
-            baseURL: "http://127.0.0.1:3000",
+            baseURL: "https://ib-nest-server.herokuapp.com/",
             data: { login: email, password: password },
           })
             .then((response) => {

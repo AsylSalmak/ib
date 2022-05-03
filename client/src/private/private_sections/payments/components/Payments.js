@@ -14,7 +14,7 @@ const Payments = () => {
     axios({
       method: "get",
       url: "services",
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then((response) => {
       setServices(response.data);
     });
@@ -28,7 +28,7 @@ const Payments = () => {
       params: {
         serviceId: serviceId,
       },
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then((response) => {
       setProviders(response.data);
     });

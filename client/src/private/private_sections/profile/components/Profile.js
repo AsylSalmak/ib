@@ -75,7 +75,7 @@ const Profile = () => {
     axios({
       method: "get",
       url: "profile",
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then(({ data }) => {
       setData(data);
       setEditableData(data);
@@ -113,7 +113,7 @@ const Profile = () => {
               axios({
                 method: "post",
                 url: "profile",
-                baseURL: "http://127.0.0.1:3000",
+                baseURL: "https://ib-nest-server.herokuapp.com/",
                 data: editableData,
               }).then(({ data }) => {
                 setData(data);

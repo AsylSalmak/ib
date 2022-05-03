@@ -11,7 +11,7 @@ const TransferArchive = () => {
     axios({
       method: "get",
       url: "operations",
-      baseURL: "http://127.0.0.1:3000",
+      baseURL: "https://ib-nest-server.herokuapp.com/",
     }).then((response) => {
       setOperations(response.data);
     });

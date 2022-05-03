@@ -160,7 +160,7 @@ const PaymentForm = (props) => {
             axios({
               method: "post",
               url: "payments/proceed",
-              baseURL: "http://127.0.0.1:3000",
+              baseURL: "https://ib-nest-server.herokuapp.com/",
               data: {
                 amount: amount,
                 paymentTo: paymentTo,
@@ -175,7 +175,7 @@ const PaymentForm = (props) => {
                 axios({
                   method: "get",
                   url: "accounts",
-                  baseURL: "http://127.0.0.1:3000",
+                  baseURL: "https://ib-nest-server.herokuapp.com/",
                 }).then((response) => {
                   const accounts = response.data.reduce(
                     (previousValue, currentValue) => {
