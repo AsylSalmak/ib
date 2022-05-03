@@ -1,11 +1,11 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, "client", "src", "index.js"),
+  entry: path.join(__dirname, 'client', 'src', 'index.js'),
   output: {
-    path: path.resolve(__dirname, "client", "dist"),
-    publicPath: "/",
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -13,30 +13,30 @@ module.exports = {
         test: /\.?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg|png)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
           },
         ],
       },
     ],
   },
-  mode: "development",
+  mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "client", "index.html"),
+      template: path.join(__dirname, 'client', 'index.html'),
     }),
   ],
   devServer: {

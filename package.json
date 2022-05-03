@@ -4,6 +4,7 @@
   "description": "online-banking",
   "main": "index.js",
   "scripts": {
+    "start": "node app",
     "dev": "webpack serve",
     "build": "webpack"
   },
@@ -12,6 +13,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "bootstrap": "^5.1.3",
+    "express": "^4.18.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.1",
