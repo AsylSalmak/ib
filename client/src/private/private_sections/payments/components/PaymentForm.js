@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Form,
   Button,
@@ -6,29 +6,29 @@ import {
   Checkbox,
   Input,
   Message,
-} from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
-import "../components/Payments.css";
-import axios from "axios";
-import { SET_ACCOUNTS } from "../../../../accounts/reducer/AccountsReducer";
-import { formatToCurrencyNumber } from "../../../../helpers/numbers";
-import NumberFormat from "react-number-format";
-import { API_URL } from "../../../../config";
+} from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import '../components/Payments.css';
+import axios from 'axios';
+import { SET_ACCOUNTS } from '../../../../accounts/reducer/AccountsReducer';
+import { formatToCurrencyNumber } from '../../../../helpers/numbers';
+import NumberFormat from 'react-number-format';
+import { API_URL } from '../../../../config';
 
-const PaymentForm = (props) => {
+const PaymentForm = props => {
   const dispatch = useDispatch();
-  const { accounts } = useSelector((store) => store.accounts);
-  const [selectedAccount, setSelectedAccount] = useState("");
-  const [paymentTo, setPaymentTo] = useState("");
-  const [amount, setAmount] = useState("");
-  const [template, setTemplate] = useState("");
+  const { accounts } = useSelector(store => store.accounts);
+  const [selectedAccount, setSelectedAccount] = useState('');
+  const [paymentTo, setPaymentTo] = useState('');
+  const [amount, setAmount] = useState('');
+  const [template, setTemplate] = useState('');
 
   const [isTemplate, setIsTemplate] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loader, setLoader] = useState(false);
   console.log(loader);
-  let options = Object.keys(accounts).map((accId) => {
+  let options = Object.keys(accounts).map(accId => {
     const account = accounts[accId];
     return {
       key: accId,
@@ -40,17 +40,17 @@ const PaymentForm = (props) => {
     };
   });
 
-  options = options.filter((el) => {
-    return el.type != "currency";
+  options = options.filter(el => {
+    return el.type != 'currency';
   });
 
   return (
-    <div className="PaymentsForm">
+    <div className='PaymentsForm'>
       <Form>
         <Form.Field>
           <label>Выберите счет</label>
           <Dropdown
-            placeholder="Выберите счет"
+            placeholder='Выберите счет'
             value={selectedAccount}
             onChange={(e, data) => {
               setSelectedAccount(data.value);
@@ -59,17 +59,17 @@ const PaymentForm = (props) => {
             selection
           />
         </Form.Field>
-        {props.serviceId === "111" ? (
+        {props.serviceId === '111' ? (
           <Form.Field>
             <label>Введите номер телефона</label>
             <NumberFormat
               value={paymentTo}
-              style={{ width: "100%" }}
-              placeholder="номер телефона"
-              onValueChange={(val) => {
+              style={{ width: '100%' }}
+              placeholder='номер телефона'
+              onValueChange={val => {
                 setPaymentTo(val.value);
               }}
-              format="+7 (7##) ### ## ##"
+              format='+7 (7##) ### ## ##'
             />
           </Form.Field>
         ) : (
@@ -77,23 +77,23 @@ const PaymentForm = (props) => {
             <label>Лицевой счет</label>
             <NumberFormat
               value={paymentTo}
-              style={{ width: "100%" }}
-              placeholder="Лицевой счет"
-              onValueChange={(val) => {
+              style={{ width: '100%' }}
+              placeholder='Лицевой счет'
+              onValueChange={val => {
                 setPaymentTo(val.value);
               }}
-              format="Лицевой счет: #### #### ##"
+              format='Лицевой счет: #### #### ##'
             />
           </Form.Field>
         )}
         <Form.Field>
           <label>Введите сумму</label>
           <NumberFormat
-            onValueChange={(val) => {
+            onValueChange={val => {
               setAmount(val.value);
             }}
             value={amount}
-            placeholder="Сумма"
+            placeholder='Сумма'
             customInput={Input}
             format={
               amount.toString().length === 2
@@ -117,32 +117,33 @@ const PaymentForm = (props) => {
           />
           <Checkbox
             checked={isTemplate}
-            onChange={(e) => {
+            onChange={e => {
               setIsTemplate(!isTemplate);
-              setTemplate("");
+              setTemplate('');
             }}
-            label="Сохранить как шаблон"
-            style={{ margin: "20px 0" }}
+            label='Сохранить как шаблон'
+            style={{ margin: '20px 0' }}
           />
           {isTemplate && (
             <div>
               <label>Введите наименование шаблона</label>
               <Input
                 value={template}
-                onChange={(e) => {
+                onChange={e => {
                   setTemplate(e.target.value);
                 }}
-                placeholder="Введите наименование шаблона"
+                placeholder='Введите наименование шаблона'
               />
             </div>
           )}
         </Form.Field>
 
         <Button
-          color="blue"
+          color='blue'
           loading={loader}
           disabled={
             !(
+              !loader &&
               selectedAccount &&
               paymentTo &&
               amount &&
@@ -151,18 +152,15 @@ const PaymentForm = (props) => {
           }
           onClick={() => {
             const balance = +accounts[selectedAccount].balance;
-            // console.log("bal", balance);
-            // console.log("amount", amount);
-            // return
             if (balance < 0 || balance < +amount) {
-              setError(true);
+              setError('Недостаточно средств');
               return;
             }
             setError(false);
             setLoader(true);
             axios({
-              method: "post",
-              url: "payments/proceed",
+              method: 'post',
+              url: 'payments/proceed',
               baseURL: API_URL,
               data: {
                 amount: amount,
@@ -173,14 +171,14 @@ const PaymentForm = (props) => {
                 template: template,
               },
             })
-              .then((response) => {
-                setSuccess(false);
+              .then(response => {
+                setSuccess(true);
                 setLoader(false);
                 axios({
-                  method: "get",
-                  url: "accounts",
+                  method: 'get',
+                  url: 'accounts',
                   baseURL: API_URL,
-                }).then((response) => {
+                }).then(response => {
                   const accounts = response.data.reduce(
                     (previousValue, currentValue) => {
                       return {
@@ -191,7 +189,7 @@ const PaymentForm = (props) => {
                     {}
                   );
                   setTimeout(() => {
-                    props.setServiceId("");
+                    props.setServiceId('');
                   }, 1000);
                   dispatch({
                     type: SET_ACCOUNTS,
@@ -201,21 +199,21 @@ const PaymentForm = (props) => {
               })
               .catch(function (error) {
                 if (error.response) {
-                  alert(error.response.data.message);
+                  setError(error.response.data.message);
                 }
               });
           }}
-          type="submit"
+          type='submit'
         >
           Оплатить
         </Button>
         {error ? (
-          <Message negative size="tiny">
-            <Message.Header>Недостаточно средств</Message.Header>
+          <Message negative size='tiny'>
+            <Message.Header>{error}</Message.Header>
           </Message>
         ) : null}
         {success ? (
-          <Message positive size="tiny">
+          <Message positive size='tiny'>
             <Message.Header>Оплата прошла успешно</Message.Header>
           </Message>
         ) : null}
