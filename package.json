@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app",
     "dev": "webpack serve",
-    "build": "webpack"
+    "build": "webpack --mode=production"
   },
   "author": "AsylSalmak",
   "license": "ISC",
