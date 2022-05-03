@@ -100,7 +100,7 @@ internalTransfersTitle
   margin-top: 10px;
   align-items: center;
   width: 30%;
-  height: 150px;
+  height: 180px;
   border-radius: 5px;
   background-color: #e0e8ecd3;
 }
@@ -114,6 +114,11 @@ internalTransfersTitle
   display: flex;
   align-items: flex-end;
   justify-content: center;
+}
+.SumForm p{
+  padding: 5px;
+  text-align: center;
+  color: rgb(85, 85, 85);
 }
 .TransferCardForm {
   display: flex;

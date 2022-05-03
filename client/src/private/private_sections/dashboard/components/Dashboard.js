@@ -8,14 +8,14 @@ import Templates from "./Templates";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 import { hideLetters } from "../../../../helpers/hideLetters";
 
-
 const Dashboard = () => {
   const [currentAccounts, setCurrenAccounts] = useState([]);
   const [cards, setCards] = useState([]);
   const [credits, setCredits] = useState([]);
   const [deposit, setDeposit] = useState([]);
+  const [currencyAccount, setCurrencyAccount] = useState([]);
   const [loading, setLoading] = useState(true);
- console.log(deposit)
+
   useEffect(() => {
     axios({
       method: "get",
@@ -27,6 +27,7 @@ const Dashboard = () => {
       const current = [];
       const cards = [];
       const deposit = [];
+      const currencyAccount = [];
       response.data.forEach((account) => {
         switch (account.type) {
           case "credit":
@@ -40,13 +41,17 @@ const Dashboard = () => {
             break;
           case "deposit":
             deposit.push(account);
-              break;
+            break;
+          case "currency":
+            currencyAccount.push(account);
+            break;
         }
       });
       setCurrenAccounts(current);
       setCards(cards);
       setCredits(credits);
       setDeposit(deposit);
+      setCurrencyAccount(currencyAccount);
     });
   }, []);
 
@@ -69,10 +74,9 @@ const Dashboard = () => {
             <div>
               {cards.length ? (
                 cards.map((account, index) => (
-                  <div className="cardsFilter">
+                  <div key={account.id} className="cardsFilter">
                     <div className="cardsBox1">
                       <div className="cardsNumber">{account.cardNumber}</div>
-
                       <div className="cardsDate">
                         {account.expirationDate}
                         <img src={logo} />
@@ -81,7 +85,6 @@ const Dashboard = () => {
                     <div className="cardsBox">
                       <label>{account.alias}</label>
                     </div>
-
                     <div className="cardsBox">
                       <label>Баланс</label>
                       <div>
@@ -97,11 +100,10 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-
         <div className="Dashboard-block1-itemBox">
           <h4>Текущие счета</h4>
           {currentAccounts.map((account, index) => (
-            <div className="cardsFilter">
+            <div key={account.id} className="cardsFilter">
               <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span> {"  "}
@@ -110,11 +112,10 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-
         <div className="Dashboard-block1-itemBox">
           <h4>Кредиты</h4>
           {credits.map((account, index) => (
-            <div className="cardsFilter">
+            <div key={account.id} className="cardsFilter">
               <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>
@@ -127,7 +128,20 @@ const Dashboard = () => {
         <div className="Dashboard-block1-itemBox">
           <h4>Депозиты</h4>
           {deposit.map((account, index) => (
-            <div className="cardsFilter">
+            <div key={account.id} className="cardsFilter">
+              <div className="cardsBox">{hideLetters(account.account)}</div>
+              <div className="cardsBox">
+                <span> {formatToCurrencyNumber(account.balance)}</span>
+                {"  "}
+                <span> {account.currencyCode}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="Dashboard-block1-itemBox">
+          <h4>Валютные счета</h4>
+          {currencyAccount.map((account, index) => (
+            <div key={account.id} className="cardsFilter">
               <div className="cardsBox">{hideLetters(account.account)}</div>
               <div className="cardsBox">
                 <span> {formatToCurrencyNumber(account.balance)}</span>

@@ -22,7 +22,7 @@ const Section4 = () => {
     rate = calculatorChekBox? rate-2: rate
     setInteresRate(rate);
 
-    console.log(rate)
+    
     let calculatorResault =
       (amount >= 60000 && amount <= 7000000) && term
         ? ((amount * rate) / 100 + amount) / term

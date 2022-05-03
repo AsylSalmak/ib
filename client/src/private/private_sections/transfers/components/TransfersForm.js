@@ -38,10 +38,8 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return el.currencyCode !== accounts[selectedAccount].currencyCode;
       });
       setCurrencyConversion(currencyCode);
-      setTransferTo(currencyCode[0].id);
     }
-   
-  }, [selectedAccount, accountsArray.length]);
+  }, [selectedAccount, accountsArray.length, transferTo]);
 
   useEffect(() => {
     if (accountsArray.length && transferId === "internal_transfer") {
@@ -92,6 +90,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите карту"}
               options={accountsCard}
+              selectedAccount={selectedAccount}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -109,6 +108,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите карту"}
               options={accountsCard}
+              selectedAccount={selectedAccount}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -127,6 +127,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите карту"}
               options={accountsCard}
+              selectedAccount={selectedAccount}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -165,6 +166,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
           <>
             <AccountSelect
               label={"Выберите карту"}
+              selectedAccount={selectedAccount}
               options={accountsCard}
               setSelectedAccount={setSelectedAccount}
             />
@@ -173,6 +175,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             </div>
             <AccountSelect
               label={"Выберите счет"}
+              selectedAccount={transferTo}
               options={filteredAccount}
               setSelectedAccount={setTransferTo}
             />
@@ -184,6 +187,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите счет"}
               options={accountsCard}
+              selectedAccount={selectedAccount}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -192,6 +196,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите карту"}
               options={filteredAccount}
+              selectedAccount={transferTo}
               setSelectedAccount={setTransferTo}
             />
           </>
@@ -202,6 +207,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <AccountSelect
               label={"Выберите депозитный счет"}
               options={deposit}
+              selectedAccount={selectedAccount}
               setSelectedAccount={setSelectedAccount}
             />
             <div className="TransfersFormIcon">
@@ -210,6 +216,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
             <CardAccountform
               options1={accountsCard}
               options2={filteredAccount}
+              selectedAccount={transferTo}
               setSelectedAccount={setTransferTo}
             />
           </>
@@ -221,6 +228,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
               options1={accountsCard}
               options2={filteredAccount}
               setSelectedAccount={setSelectedAccount}
+              selectedAccount={selectedAccount}
             />
             <div className="TransfersFormIcon">
               <Icon name="angle right" size="big" />
@@ -229,6 +237,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
               label={"Выберите депозитный счет"}
               options={deposit}
               setSelectedAccount={setTransferTo}
+              selectedAccount={transferTo}
             />
           </>
         );
@@ -236,6 +245,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
         return (
           <>
             <AccountSelect
+              selectedAccount={selectedAccount}
               label={"Выберите счет"}
               options={accountsArray}
               setSelectedAccount={setSelectedAccount}
@@ -244,6 +254,7 @@ const TransfersForm = ({ transferId, transferFormLabel, setTransfersId }) => {
               <Icon name="angle right" size="big" />
             </div>
             <AccountSelect
+              selectedAccount={transferTo}
               label={"Выберите счет"}
               options={currencyConversion}
               setSelectedAccount={setTransferTo}

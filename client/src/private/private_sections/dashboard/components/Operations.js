@@ -24,7 +24,7 @@ const Operations = () => {
     <div>
       {accountsFetched ? (
         operations.map((operation, index) => (
-          <div className="operationsBox">
+          <div key={operation.id} className="operationsBox">
             <div>
               <label>Дата операции:</label>
               {moment(operation.date).format("DD.MM.YYYY HH:mm")}

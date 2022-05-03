@@ -6,6 +6,7 @@ import UserActions from "./UserActions";
 
 const LoginDropdownMenu = () => {
   const user = useSelector((store) => store.user);
+  console.log(user)
 
   return (
     <div>
@@ -16,7 +17,7 @@ const LoginDropdownMenu = () => {
           pinned
           trigger={
             <span className="dropwdown-label">
-              {user.username} <Icon name="angle down" />
+              {user.email} <Icon name="angle down" />
             </span>
           }
           position="bottom right"

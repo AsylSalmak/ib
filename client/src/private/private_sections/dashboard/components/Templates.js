@@ -41,7 +41,7 @@ const Tempaltes = () => {
       <div>
         {accountsFetched ? (
           payments.map((payment, index) => (
-            <div className="paymentCont">
+            <div key={payment.id} className="paymentCont">
               <div className="paymentBox">
                 <div className="paymentTxt">
                   <label>{payment.alias}</label>
@@ -74,8 +74,10 @@ const Tempaltes = () => {
         {accountsFetched ? (
           transfers.map((transfer, index) => (
             <div className="transfersCont">
+              
               {transfer.transferType === "internal" ? (
                 <div
+                key={transfer.id}
                   style={{
                     width: "50px",
                     backgroundColor: "#ed6262",

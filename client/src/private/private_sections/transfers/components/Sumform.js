@@ -26,7 +26,7 @@ const Sumform = (props) => {
   const [amount, setAmount] = useState("");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [conversion, setConversion] = useState('');
+  const [conversion, setConversion] = useState("");
   const balance = accounts[props.selectedAccount]
     ? accounts[props.selectedAccount].balance
     : 0;
@@ -43,7 +43,6 @@ const Sumform = (props) => {
 
   useEffect(() => {
     if (props.transferId === "conversion_account") {
-
       let conversion;
       if (currencyCode1 === "KZT" && currencyCode2 === "USD") {
         conversion = amount / 453;
@@ -63,7 +62,7 @@ const Sumform = (props) => {
       if (currencyCode1 === "USD" && currencyCode2 === "RUB") {
         conversion = amount * 79;
       }
-      setConversion(conversion)
+      setConversion(conversion);
     }
   }, [currencyCode2, currencyCode1, amount]);
 
@@ -77,14 +76,13 @@ const Sumform = (props) => {
             )}${currencyCode2}`}
           </p>
         ) : (
-          <label>"Сумма" </label>
+          <label>Сумма</label>
         )}
 
         <NumberFormat
           onChange={(e) => {
             let value = e.target.value;
             value = +value.replace(/[^0-9.]/g, "");
-            console.log(value);
             setAmount(value);
           }}
           value={amount}
@@ -105,7 +103,7 @@ const Sumform = (props) => {
               : amount.toString().length === 7
               ? `# ### #### ${currencyCode1}`
               : amount.toString().length === 8
-              ? `## ## #### ${currencyCode1}`
+              ? `## ### ### ${currencyCode1}`
               : amount.toString().length === 9
               ? `### ### ### ${currencyCode1}`
               : `## ${currencyCode1}`
