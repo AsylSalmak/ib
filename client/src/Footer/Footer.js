@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="footerBox1-Nav">
-            <p>Мобильное приложение Альфа-Банк Казахстан</p>
+            <p>Мобильное приложение нашего Банка</p>
             <div className="footerBox1-Icon">
               <div className="Icon_App">
                 <a href="">

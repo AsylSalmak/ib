@@ -14,7 +14,7 @@ const CarouselBox = () => {
         />
         <Carousel.Caption
           style={{
-            width: "300px",
+            width: "600px",
             height: "100%",
             left: "195px",
             position: "relative",
@@ -22,7 +22,7 @@ const CarouselBox = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: "40px",
+            paddingRight: "150px",
           }}
         >
           <h3>Откройте Депозит</h3>
@@ -48,7 +48,7 @@ const CarouselBox = () => {
         />
         <Carousel.Caption
           style={{
-            width: "300px",
+            width: "600px",
             height: "100%",
             left: "195px",
             position: "relative",
@@ -56,7 +56,7 @@ const CarouselBox = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: "40px",
+            paddingRight: "150px",
           }}
         >
           <h3>Ипотека на вторичное жилье</h3>
@@ -82,7 +82,7 @@ const CarouselBox = () => {
         />
         <Carousel.Caption
           style={{
-            width: "300px",
+            width: "600px",
             height: "100%",
             left: "195px",
             position: "relative",
@@ -90,7 +90,7 @@ const CarouselBox = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: "40px",
+            paddingRight: "150px",
           }}
         >
           <h3>Дети учатся быть взрослыми!</h3>
@@ -116,7 +116,7 @@ const CarouselBox = () => {
         />
         <Carousel.Caption
           style={{
-            width: "300px",
+            width: "600px",
             height: "100%",
             left: "195px",
             position: "relative",
@@ -124,7 +124,7 @@ const CarouselBox = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            paddingRight: "40px",
+            paddingRight: "150px",
           }}
         >
           <h3>Переводы по миру</h3>
