@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 import { Placeholder } from "semantic-ui-react";
 import { hideLetters } from "../../../../helpers/hideLetters";
+import { API_URL } from "../../../../config";
 
 const Operations = () => {
   const [operations, setOperations] = useState([]);
@@ -14,7 +15,7 @@ const Operations = () => {
     axios({
       method: "get",
       url: "operations/last",
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then((response) => {
       setOperations(response.data);
     });

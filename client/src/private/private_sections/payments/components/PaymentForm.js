@@ -13,6 +13,7 @@ import axios from "axios";
 import { SET_ACCOUNTS } from "../../../../accounts/reducer/AccountsReducer";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
 import NumberFormat from "react-number-format";
+import { API_URL } from "../../../../config";
 
 const PaymentForm = (props) => {
   const dispatch = useDispatch();
@@ -160,7 +161,7 @@ const PaymentForm = (props) => {
             axios({
               method: "post",
               url: "payments/proceed",
-              baseURL: "https://ib-nest-server.herokuapp.com/",
+              baseURL: API_URL,
               data: {
                 amount: amount,
                 paymentTo: paymentTo,
@@ -175,7 +176,7 @@ const PaymentForm = (props) => {
                 axios({
                   method: "get",
                   url: "accounts",
-                  baseURL: "https://ib-nest-server.herokuapp.com/",
+                  baseURL: API_URL,
                 }).then((response) => {
                   const accounts = response.data.reduce(
                     (previousValue, currentValue) => {

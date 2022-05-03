@@ -5,6 +5,8 @@ import NumberFormat from "react-number-format";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_ACCOUNTS } from "../../../../accounts/reducer/AccountsReducer";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
+import { API_URL } from "../../../../config";
+
 const chekTransferTo = (transferTo, transferId) => {
   switch (transferId) {
     case "card_to_card":
@@ -138,7 +140,7 @@ const Sumform = (props) => {
                   ? "conversion"
                   : "transfers"
               }/proceed`,
-              baseURL: "https://ib-nest-server.herokuapp.com/",
+              baseURL: API_URL,
               data: {
                 amount: amount,
                 transferId: props.transferId,

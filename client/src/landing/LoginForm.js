@@ -1,19 +1,20 @@
-import React from "react";
-import axios from "axios";
-import { Button, Checkbox, Form, Message } from "semantic-ui-react";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { SET_USER } from "../user/reducers/userReducer";
-import "./index.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import axios from 'axios';
+import { Button, Checkbox, Form, Message } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { SET_USER } from '../user/reducers/userReducer';
+import './index.css';
+import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState(false);
   const dispatch = useDispatch();
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   return (
@@ -22,24 +23,24 @@ const LoginForm = () => {
         <label>Email</label>
         <input
           value={email}
-          onChange={(e) => {
+          onChange={e => {
             setEmail(e.target.value);
           }}
-          placeholder="email"
+          placeholder='email'
         />
       </Form.Field>
       <Form.Field>
         <label>Password</label>
         <input
           value={password}
-          onChange={(e) => {
+          onChange={e => {
             setPassword(e.target.value);
           }}
-          placeholder="Password"
+          placeholder='Password'
         />
       </Form.Field>
       {error ? (
-        <Message negative size="tiny">
+        <Message negative size='tiny'>
           <Message.Header>{error}</Message.Header>
         </Message>
       ) : null}
@@ -50,34 +51,34 @@ const LoginForm = () => {
           onChange={() => {
             setConfirm(!confirm);
           }}
-          label="I confirm my data"
+          label='I confirm my data'
         />
       </Form.Field>
 
       <Button
         loading={loading}
-        color="green"
+        color='green'
         disabled={!(email && password && confirm)}
         onClick={() => {
           setLoading(true);
           axios({
-            method: "post",
-            url: "auth",
-            baseURL: "https://ib-nest-server.herokuapp.com/",
+            method: 'post',
+            url: 'auth',
+            baseURL: API_URL,
             data: { login: email, password: password },
           })
-            .then((response) => {
+            .then(response => {
               dispatch({
                 type: SET_USER,
                 payload: response.data,
               });
               localStorage.setItem(
-                "user",
+                'user',
                 JSON.stringify({ ...response.data, logedIn: true })
               );
-              setError("");
+              setError('');
               setLoading(false);
-              navigate("/private/dashboard");
+              navigate('/private/dashboard');
             })
             .catch(function (error) {
               if (error.response) {
@@ -85,9 +86,8 @@ const LoginForm = () => {
                 setLoading(false);
               }
             });
-
         }}
-        type="submit"
+        type='submit'
       >
         Submit
       </Button>

@@ -4,6 +4,7 @@ import axios from "axios";
 import Services from "./Services";
 import Providers from "./Providers";
 import PaymentForm from "./PaymentForm";
+import { API_URL } from "../../../../config";
 
 const Payments = () => {
   const [services, setServices] = useState([]);
@@ -14,7 +15,7 @@ const Payments = () => {
     axios({
       method: "get",
       url: "services",
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then((response) => {
       setServices(response.data);
     });
@@ -28,7 +29,7 @@ const Payments = () => {
       params: {
         serviceId: serviceId,
       },
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then((response) => {
       setProviders(response.data);
     });

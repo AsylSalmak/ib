@@ -6,6 +6,7 @@ import axios from "axios";
 import NumberFormat from "react-number-format";
 import { Message } from "semantic-ui-react";
 import { SET_USER } from "../../../../user/reducers/userReducer";
+import { API_URL } from "../../../../config";
 
 const fields = [
   { field: "name", label: "Имя" },
@@ -75,7 +76,7 @@ const Profile = () => {
     axios({
       method: "get",
       url: "profile",
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then(({ data }) => {
       setData(data);
       setEditableData(data);
@@ -113,7 +114,7 @@ const Profile = () => {
               axios({
                 method: "post",
                 url: "profile",
-                baseURL: "https://ib-nest-server.herokuapp.com/",
+                baseURL: API_URL,
                 data: editableData,
               }).then(({ data }) => {
                 setData(data);

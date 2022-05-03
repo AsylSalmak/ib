@@ -4,6 +4,8 @@ import { Placeholder } from "semantic-ui-react";
 import moment from "moment";
 import axios from "axios";
 import { formatToCurrencyNumber } from "../../../../helpers/numbers";
+import { API_URL } from "../../../../config";
+
 const TransferArchive = () => {
   const { accounts, accountsFetched } = useSelector((store) => store.accounts);
   const [operations, setOperations] = useState([]);
@@ -11,7 +13,7 @@ const TransferArchive = () => {
     axios({
       method: "get",
       url: "operations",
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then((response) => {
       setOperations(response.data);
     });

@@ -14,6 +14,7 @@ import {
   Popup,
 } from "semantic-ui-react";
 import "../../operations/components/operations.css";
+import { API_URL } from "../../../../config";
 
 const headers = [
   { title: "Номер", field: "id" },
@@ -55,7 +56,7 @@ const Operations = () => {
     axios({
       method: "get",
       url: "operations",
-      baseURL: "https://ib-nest-server.herokuapp.com/",
+      baseURL: API_URL,
     }).then((response) => {
       setOriginOperations(response.data);
       setOperations(response.data);
@@ -310,7 +311,7 @@ const Operations = () => {
       <div className="operationsPaginationsNumbersBox">
         <Pagination
           onPageChange={(e, data) => {
-                setCurrentPage(data.activePage);
+            setCurrentPage(data.activePage);
           }}
           size="mini"
           activePage={currentPage}
