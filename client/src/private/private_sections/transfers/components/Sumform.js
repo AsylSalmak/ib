@@ -40,9 +40,6 @@ const Sumform = (props) => {
     ? accounts[props.transferTo].currencyCode
     : 0;
 
-  // console.log(props.selectedAccount);
-  // console.log(props.transferTo);
-
   useEffect(() => {
     if (props.transferId === "conversion_account") {
       let conversion;
@@ -122,6 +119,7 @@ const Sumform = (props) => {
           color="blue"
           disabled={
             !(
+              !loading &&
               props.transferId &&
               props.transferTo &&
               chekTransferTo(props.transferTo, props.transferId) &&

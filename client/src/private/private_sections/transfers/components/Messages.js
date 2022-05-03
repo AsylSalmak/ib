@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react';
+import { Message } from 'semantic-ui-react';
 
 const Messages = () => {
-  return <h4>Успешная операция</h4>;
+  return (
+    <Message positive size='tiny'>
+      <Message.Header>Перевод успешно совершен</Message.Header>
+    </Message>
+  );
 };
 export default Messages;
