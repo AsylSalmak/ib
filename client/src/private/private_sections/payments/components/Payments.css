@@ -27,7 +27,7 @@
   -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   text-transform: uppercase;
-  background-color: deepskyblue;
+  background-color: #93deff85;
 }
 .activeService h5 {
   text-align: center;
