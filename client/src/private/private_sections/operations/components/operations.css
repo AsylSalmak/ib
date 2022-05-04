@@ -88,13 +88,12 @@
 }
 
 .sumfilterBox {
-  text-align: center;
   cursor: pointer;
-  width: 150px;
   border-radius: 4px;
+  padding: 5px 12px;
 }
 .sumfilterBox:hover {
-  background-color: #e7e7e7;
+  background-color: #ededed;
 }
 
 .operationsSelect {

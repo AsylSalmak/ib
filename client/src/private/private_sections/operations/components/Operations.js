@@ -201,8 +201,8 @@ const Operations = () => {
                     setSelectTypeFilterPayment(!selectTypeFilterPayment);
                   }}
                 />
-                {' '}
                 <Checkbox
+                  style={{ marginLeft: '10px' }}
                   label={'Переводы'}
                   checked={selectTypeFilterTransfer}
                   onChange={() => {
