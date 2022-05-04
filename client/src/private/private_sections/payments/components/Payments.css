@@ -27,7 +27,7 @@
   -moz-box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 3px 6px -1px rgba(34, 60, 80, 0.2);
   text-transform: uppercase;
-  background-color: #93deff85;
+  border: 2px solid #7ebaf3ba;
 }
 .activeService h5 {
   text-align: center;
@@ -72,7 +72,7 @@
   margin: 0 20px;
   justify-content: center;
   align-items: center;
-  background-color: deepskyblue;
+  border: 2px solid #7ebaf3ba;
   -webkit-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 5px 6px -1px rgba(34, 60, 80, 0.2);

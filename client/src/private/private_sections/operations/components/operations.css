@@ -4,11 +4,12 @@
   padding: 20px;
 }
 .operations-row {
-  margin-bottom: 10px;
+  margin-bottom: 36px;
   display: flex;
   justify-content: space-between;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
+  color: #434343;
 }
 
 .operations-row > div > span {
@@ -60,16 +61,16 @@
 .operationsSearchBox {
   flex-basis: 65%;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-right: 50px;
 }
 .operationsFilterType {
   flex-basis: 20%;
 }
-.sumfilter{
+.sumfilter {
   flex-basis: 15%;
   display: flex;
-  }
+}
 .operations-table-filter-box {
   display: flex;
   justify-content: space-between;
@@ -83,25 +84,26 @@
   align-items: center;
 }
 
-.sumfilterBox{
+.sumfilterBox {
   text-align: center;
   cursor: pointer;
   width: 150px;
+  border-radius: 4px;
 }
-.sumfilterBox:hover{
-  font-size: 16px;
+.sumfilterBox:hover {
+  background-color: #e7e7e7;
 }
 
-.operationsSelect{
+.operationsSelect {
   border: none;
 }
 
-.operationsSelect option{
+.operationsSelect option {
   border: none;
 }
-.operationsSelectBox{
+.operationsSelectBox {
   display: flex;
   width: 150px;
-  align-items:center;
-  justify-content:start;
+  align-items: center;
+  justify-content: start;
 }
