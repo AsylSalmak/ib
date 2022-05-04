@@ -1,39 +1,41 @@
-import React from "react";
-import { Popup, Icon } from "semantic-ui-react";
-import LoginForm from "./LoginForm";
-import { useSelector } from "react-redux";
-import UserActions from "./UserActions";
+import React from 'react';
+import { Popup, Icon } from 'semantic-ui-react';
+import LoginForm from './LoginForm';
+import { useSelector } from 'react-redux';
+import UserActions from './UserActions';
 
 const LoginDropdownMenu = () => {
-  const user = useSelector((store) => store.user);
-  console.log(user)
+  const user = useSelector(store => store.user);
+  console.log(user);
 
   return (
     <div>
       {user.logedIn ? (
         <Popup
+          style={{ minWidth: '200px' }}
           content={<UserActions />}
-          on="click"
+          on='click'
           pinned
           trigger={
-            <span className="dropwdown-label">
-              {user.email} <Icon name="angle down" />
+            <span className='dropwdown-label'>
+              {user.email} <Icon name='angle down' />
             </span>
           }
-          position="bottom right"
+          position='bottom right'
         />
       ) : (
         <Popup
+          style={{ minWidth: '200px' }}
           content={<LoginForm />}
-          on="click"
+          on='click'
           pinned
           trigger={
-            <span className="dropwdown-label">
+            <span className='dropwdown-label'>
               Login
-              <Icon name="angle down" />
+              <Icon name='angle down' />
             </span>
           }
-          position="bottom right"
+          position='bottom right'
         />
       )}
     </div>
