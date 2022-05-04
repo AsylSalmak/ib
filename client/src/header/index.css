@@ -1,15 +1,16 @@
-.dropwdown-label:hover {
-  background-color: #4183c4;
-  padding: 0.78571429em 0.92857143em;
-  margin: 0 0.35714286em;
-}
 .dropwdown-label {
   padding: 0.78571429em 0.92857143em;
   margin: 0 0.35714286em;
   border-radius: 4px;
   color: #3f4a58;
   font-size: 15px;
+  border: 1px solid #e3e3e3;
 }
+
+.dropwdown-label:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
 .Header {
   background-color: #fff;
   height: 100%;
