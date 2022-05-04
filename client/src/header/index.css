@@ -5,6 +5,7 @@
   color: #3f4a58;
   font-size: 15px;
   border: 1px solid #e3e3e3;
+  cursor: pointer;
 }
 
 .dropwdown-label:hover {
