@@ -9,6 +9,7 @@ import Payments from "../private/private_sections/payments/components/Payments";
 import Transfers from "../private/private_sections/transfers/components/TransferContainer";
 import Operations from "../private/private_sections/operations/components/Operations";
 import Footer from "../Footer/Footer";
+
 const ApplicationRouter = () => {
   return (
     <BrowserRouter>
