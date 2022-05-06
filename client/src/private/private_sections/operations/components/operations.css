@@ -2,13 +2,15 @@
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   padding: 20px;
+  padding-bottom: 40px;
 }
 .operations-row {
-  margin-bottom: 10px;
+  margin-bottom: 36px;
   display: flex;
   justify-content: space-between;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
+  color: #434343;
 }
 
 .operations-row > div > span {
@@ -54,22 +56,23 @@
   font-size: 14px;
 }
 .operations-table-filter-box {
+  margin-bottom: 30px;
   display: flex;
 }
 
 .operationsSearchBox {
   flex-basis: 65%;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-right: 50px;
 }
 .operationsFilterType {
   flex-basis: 20%;
 }
-.sumfilter{
+.sumfilter {
   flex-basis: 15%;
   display: flex;
-  }
+}
 .operations-table-filter-box {
   display: flex;
   justify-content: space-between;
@@ -78,30 +81,31 @@
 }
 
 .operationsPaginationsNumbersBox {
+  margin-top: 66px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.sumfilterBox{
-  text-align: center;
+.sumfilterBox {
   cursor: pointer;
-  width: 150px;
+  border-radius: 4px;
+  padding: 5px 12px;
 }
-.sumfilterBox:hover{
-  font-size: 16px;
+.sumfilterBox:hover {
+  background-color: #ededed;
 }
 
-.operationsSelect{
+.operationsSelect {
   border: none;
 }
 
-.operationsSelect option{
+.operationsSelect option {
   border: none;
 }
-.operationsSelectBox{
+.operationsSelectBox {
   display: flex;
   width: 150px;
-  align-items:center;
-  justify-content:start;
+  align-items: center;
+  justify-content: start;
 }

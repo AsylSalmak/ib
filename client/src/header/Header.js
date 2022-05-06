@@ -12,10 +12,12 @@ const Header = () => {
     <div className="Header">
       <Container>
         <Menu secondary>
-         <Link to='./'> <img
-            src={logo}
-            style={{ width: "150px", height: "70px", margin: "5px" }}
-          /></Link>
+          <Link to="/">
+            <img
+              src={logo}
+              style={{ width: "150px", height: "70px", margin: "5px" }}
+            />
+          </Link>
           {user.logedIn ? (
             <Menu.Item>
               <Link to="./private/dashboard" className="link">

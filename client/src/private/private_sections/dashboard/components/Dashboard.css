@@ -24,11 +24,12 @@
   border-radius: 5px;
   background: rgb(131, 58, 180);
   background: linear-gradient(
-    280deg,
-    rgba(131, 58, 180, 1) 10%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 69, 69, 1) 82%
+    335deg,
+    rgb(249 203 73) 10%,
+    rgb(201 85 15 / 90%) 50%,
+    rgb(163 56 56) 84%
   );
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 40%);
   display: flex;
   justify-content: end;
   flex-direction: column;
@@ -40,6 +41,8 @@
 }
 
 .cardsNumber {
+  letter-spacing: 3px;
+  font-weight: 400;
   width: 100%;
   display: flex;
   justify-content: center;

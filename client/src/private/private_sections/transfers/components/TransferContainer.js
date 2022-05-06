@@ -44,7 +44,7 @@ const internalTransfers = [
 ];
 
 const conversion = [
-  { id: "conversion_account", icon: "sync", label: "По счетам" }
+  { id: "conversion_account", icon: "sync", label: "Между своими счетами" }
 ];
 
 const TransferContainer = () => {
